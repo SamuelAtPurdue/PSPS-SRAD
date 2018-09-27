@@ -1,0 +1,9 @@
+################################################
+########### DATA TRANSFER PROTOCOL #############
+################################################
+
+GOALS:
+Create a simple and reliable protocol for data transfer over rf.
+ > minimize data loss from external interference
+ > transmit only the data relevent for flight opperations
+ > low overhead protocol focussing primarily on reliability and robustness
