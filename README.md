@@ -46,26 +46,82 @@ The following are not mission critical but are goals but are planned for the fut
 <h3>Restrictions</h3>
 <hr>
 <p>
-The constraints are as follows:
-<ul>
-  <li> Cost: TBD</li>
-  <li> Flyability: Must fit in a 6 inch radius fuselage</li>
-  <li> Length and weight should be minimized</li>
-</ul>
-</p>
-<br>
-<h3>Timeline</h3>
-<hr>
-<p>
-TBD
+  The constraints are as follows:
+  <ul>
+    <li> Cost: TBD</li>
+    <li> Flyability: Must fit in a 6 inch radius fuselage</li>
+    <li> Length and weight should be minimized</li>
+  </ul>
 </p>
 <br>
 <h3>Components</h3>
 <hr>
 <p>
-TBD
+  TBD
 </p>
 <br>
-
-
-
+<br>
+<h3>Project Structure</h3>
+<hr>
+<p>
+This project is organized into 7 main team roles:
+<ul>
+  <li> 
+    <h4> Data Transmission and Interpretation</h4>
+    <p> 
+      Description: The Data Transmission and Interpretation role is tasked with developing and maintaining a effective way to collect, store, and use data received from the rocket.<br>
+      Timeline: TBD<br>
+      Project Lead: Samuel Hild<br>
+    </p>
+  </li>
+  <li> 
+    <h4> Flight computer hardware</h4>
+    <p> 
+      Description: Flight Computer Hardware is tasked with construction of the electronic components of the flight computer including sensors, tracking, and main processor. <br>
+      Timeline: TBD<br>
+      Project Lead: Jeff Kaji<br>
+    </p>
+  </li>
+  <li> 
+    <h4> Flight Data Collection</h4>
+    <p>
+      Description: Flight Data Collection is tasked with collection of flight and status data from the flight computer.<br>
+      Timeline: TBD<br>
+      Project Lead: Jeff Kaji<br>
+    </p>
+  </li>
+  <li> 
+    <h4> Radio Hardware and Operation</h4>
+    <p> 
+      Description: Radio Hardware and Operations is tasked with building and operating a radio capable of receiving transmissions from the rocket throughout the duration of flight while operating within the legal regulations.<br>
+      Timeline: TBD<br>
+      Project Lead: Arpit
+    </p>
+  </li>
+  <li> 
+    <h4> Flight sled Hardware</h4>
+    <p> 
+      Description: Flight Sled Hardware is tasked with creating a 3d model of a flight sled to be flown and choosing the correct materials to withstand the flight.<br>
+      Timeline: TBD<br>
+      Project Lead: TBD<br>
+    </p>
+  </li>
+  <li> 
+    <h4> Ground Station Software</h4>
+    <p>
+      Description: The Ground Station Software role is tasked with building and maintaining an easy to use, understand, and maintain user interface for use by the groundstation. This will include data displays and and easy way to send commands to the rocket.<br>
+      Timeline: TBD<br>      
+      Project Lead: Mark Batistich<br>
+    </p>
+  </li>
+  <li> 
+    <h4> Systems Coordinator</h4>
+    <p> 
+      Description: The System Coordinator are tasked with maintaining communication between the other teams and making sure everything runs together and is well documented.<br>
+      Timeline: Required Throughout duration of the project.<br>
+      Project Lead: Samuel Hild<br>
+    </p>  
+  </li>
+</ul>
+</p>
+<br>
