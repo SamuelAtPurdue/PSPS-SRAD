@@ -2,7 +2,7 @@
 #included in place of the actual values is the size of the raw data and the units. All integers are 16 bit signed unless otherwise specified.
 #16 bit is choosen because that is the size that arduino supports.
 #altitude is unsigned because signing the 16 bit integer would limit the altitude to 32767m and we don't trust propulsion that much. by unsigning the integer the altitude is instead limited to 65535 m. 
-#this is formatted as a csv so it is easily imported into excel, but this formatting will need to be handled on the ground
+#this is formatted as a csv so it is easily imported into excel but this formatting will need to be handled on the ground
 #NOTICE: each as two values one from each redundant component.
 alt_1,16b unsigned int,m
 alt_2,16b unsigned int,m
