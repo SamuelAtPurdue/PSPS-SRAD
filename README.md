@@ -95,7 +95,7 @@ This project is organized into 7 main team roles:
     <p> 
       Description: Radio Hardware and Operations is tasked with building and operating a radio capable of receiving transmissions from the rocket throughout the duration of flight while operating within the legal regulations.<br>
       Timeline: TBD<br>
-      Project Lead: Arpit
+      Project Lead: Arpit Amin
     </p>
   </li>
   <li> 
@@ -103,7 +103,7 @@ This project is organized into 7 main team roles:
     <p> 
       Description: Flight Sled Hardware is tasked with creating a 3d model of a flight sled to be flown and choosing the correct materials to withstand the flight.<br>
       Timeline: TBD<br>
-      Project Lead: TBD<br>
+      Project Lead: Arpit Amin<br>
     </p>
   </li>
   <li> 
