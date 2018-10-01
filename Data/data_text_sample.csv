@@ -15,4 +15,7 @@ prs_2,16b int,kPa
 png_1,16b int,ms      #time sent in ms seconds and hours truncated
 png_2,16b int,ms
 lng_1,32b float,deg   #Sent as a 32 bit float as that is native to arduino
+lng_2,32b float,deg   
+lat_1,32b float,deg
+lat_2,32b float,deg
 #####TODO ADD OTHER VALUES
