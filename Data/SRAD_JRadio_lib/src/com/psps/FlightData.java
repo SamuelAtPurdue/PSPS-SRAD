@@ -5,32 +5,45 @@ package com.psps;
  * A data structure for flight data.
  */
 public class FlightData {
-    private String dataType = "[null]";
+    private String datatype = "[null]";
     private short value = 0;         //all values are stored in shorts for compatibility.
     private String units = "[null";
+    private final int index;
 
-    //getter and setter functions by java standards
-    public String getDataType() {
-        return dataType;
+    //Constructor MUST have an index or it will have no data type
+    public FlightData(int index, short value) throws InvalidDataTypeException{
+        this.value = value;
+        this.index = index;
+        this.datatype = DataSequenceLookup.lookupFlightDataType(index).getTypeName();
+        this.units = DataSequenceLookup.lookupFlightDataType(index).getUnits();
+    }
+    //overloaded constructor
+    public FlightData(int index) throws InvalidDataTypeException{
+        this(index,(short) 0);
     }
 
-    public void setDataType(String dataType) {
-        this.dataType = dataType;
+    //accessors
+    String getDatatype() {
+        return datatype;
     }
 
-    public short getValue() {
+    void setDatatype(String datatype) {
+        this.datatype = datatype;
+    }
+
+    short getValue() {
         return value;
     }
 
-    public void setValue(short value) {
+    void setValue(short value) {
         this.value = value;
     }
 
-    public String getUnits() {
+    String getUnits() {
         return units;
     }
 
-    public void setUnits(String units) {
+    void setUnits(String units) {
         this.units = units;
     }
 }
