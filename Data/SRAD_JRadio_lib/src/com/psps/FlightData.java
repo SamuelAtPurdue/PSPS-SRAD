@@ -4,7 +4,7 @@ package com.psps;
  * Created by Samuel Hild on 10/1/2018.
  * A data structure for flight data.
  */
-public class FlightData {
+class FlightData {
     private String datatype = "[null]";
     private short value = 0;         //all values are stored in shorts for compatibility.
     private String units = "[null";
@@ -20,6 +20,16 @@ public class FlightData {
     //overloaded constructor
     public FlightData(int index) throws InvalidDataTypeException{
         this(index,(short) 0);
+    }
+
+    //Object Overrides
+    @Override
+    public String toString(){
+        return String.format("%s: %d %s",datatype,value,units);
+    }
+    @Override
+    public boolean equals(Object comparevalue){
+        return (this.toString().equals(comparevalue.toString()));
     }
 
     //accessors

@@ -5,6 +5,11 @@ package com.psps;
  */
 public interface Formatter {
 
+    Formatter form(Object... data);
+
+    Object[] unform(Formatter formatter);
+
+
 
     /**
      * Simply dumps data to command line for Debugging
