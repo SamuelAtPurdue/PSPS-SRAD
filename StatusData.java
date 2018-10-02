@@ -3,7 +3,7 @@ package com.psps;
 /**
  * Created by Samuel Hild on 10/2/2018.
  */
-public class StatusData {
+class StatusData {
     private String datatype = "[null]";
     private boolean value = false;
     private final int index;
