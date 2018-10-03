@@ -3,7 +3,9 @@ Commands:
 relay_enable(relay_id)
 relay_disable(relay_id)
 chip_sample_rate(chip_id, speed)
-set_epoch()
+start_epoch(when)
+start_recording(when)
+stop_recording(when)
 
 
 Command Descriptions:
@@ -14,7 +16,8 @@ relay_enable/relay_disable
 chip_sample_rate
   Sets the frequency at which a chip takes measurements.
   
-
+start_epoch
+  Sets current time as beginning of epoch. All measurments will be timestamped in terms of time since beginning of epoch.
 
 
 Parameters:
@@ -22,5 +25,6 @@ Parameters:
 relay_id: numerical id of relay
 chip_id: numerical id of chip
 speed: TBD
-
-
+when: 
+  NOW: run command immediately
+  unix timestamp to run command at. Depending on command, past times may be invalid. Otherwise, adjustment is made to account for offset.
