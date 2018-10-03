@@ -2,24 +2,44 @@ package com.psps;
 
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Samuel Hild on 10/1/2018.
+ * DataSequenceLookup is for searching a predetermined data sequence to determine the type of data that has been down linked from the radio
+ * Most methods are for internal use only and the class is package access only.
+ * Latest Test: 10/2/18
  */
 class DataSequenceLookup {
 
-    private static final String FLIGHT_DATA_SEQUENCE_FILE = "../flightdatasequence.txt";
-    private static final String STATUS_DATA_SEQUENCE_FILE = "../statusdatasequence.txt";
+    //Constants
+    private static final String FLIGHT_DATA_SEQUENCE_FILE = "flightdatasequence.csv";
+    private static final String STATUS_DATA_SEQUENCE_FILE = "statusdatasequence.csv";
 
     private static final DataType[] FLIGHT_DATA_SEQUENCE;
     private static final String[] STATUS_DATA_SEQUENCE;
 
-    //Defaults
-    private static final String[] DEFAULT_STATUS_SEQUENCE = new String[]{};
-    private static final DataType[] DEFAULT_FLIGHT_SEQUENCE = new DataType[]{};
+    //Default Sequences
+    private static final String[] DEFAULT_STATUS_SEQUENCE = new String[]{"signal"}; //TODO add Defaults for status once hardware is chosen
+    private static final DataType[] DEFAULT_FLIGHT_SEQUENCE = new DataType[]{
+            new DataType("Altitude", "m"),
+            new DataType("Pressure","kPa"),
+            new DataType("Acceleration","m/s^2"),
+            new DataType("Longitude", "deg"),
+            new DataType("Latitude", "deg"),
+            new DataType("Ping", "ms"),
+            new DataType("Total Power", "%"),           //TODO add separate batteries
+            new DataType("Pitch Attitude", "deg"),
+            new DataType("Yaw Attitude", "deg"),
+            new DataType("Roll Attitude", "deg"),
+            new DataType("Magnetic Heading", "deg"),
+            new DataType("Velocity", "m/s"),
+            new DataType("Rate of Climb", "m/s")
+    };
 
+    //static initializer sets initial values for FLIGHT_DATA_SEQUENCE and STATUS_DATA_SEQUENCE for future comparison
     static{
-        //TODO see TODO below
         FLIGHT_DATA_SEQUENCE = getFlightDataSequenceFromFile(FLIGHT_DATA_SEQUENCE_FILE);
         STATUS_DATA_SEQUENCE = getStatusDataSequenceFromFile(STATUS_DATA_SEQUENCE_FILE);
     }
@@ -49,27 +69,25 @@ class DataSequenceLookup {
 
         throw new InvalidDataTypeException("status data value not in lookup sequence");
     }
-    //terrifying, mortifying, petrifying, stupefying code below
-    //TODO write
+
+    //gets the flight data sequence from a file
     private static DataType[] getFlightDataSequenceFromFile(String filename){
         BufferedReader reader = openConfigFile(filename);
         return readDataTypeFromFile(reader);
     }
+
     private static DataType[] readDataTypeFromFile(BufferedReader reader){
         try {
-            StringBuffer rawinputtypes = new StringBuffer();
-            StringBuffer rawinputunits = new StringBuffer();
+            List<DataType> buffer = new ArrayList<>();
             String nextline;
-            while ((nextline = reader.readLine()) != null) {
-                rawinputtypes.append(nextline.split(",")[0]+",");
-                rawinputunits.append(nextline.split(",")[1]+",");
-            }
+            while ((nextline = reader.readLine()) != null)
+                buffer.add(new DataType(nextline.split(",")[0], nextline.split(",")[1]));
+
             reader.close();
-            String[] typesarray = rawinputtypes.toString().split(",");
-            String[] unitsarray = rawinputunits.toString().split(",");
-            DataType[] output = new DataType[typesarray.length-1];
-            for (int i = 0; i <output.length; i++)
-                output[i] = new DataType(typesarray[i],unitsarray[i]);
+
+            DataType[] output = new DataType[buffer.size()];
+            output = buffer.toArray(output);
+
             return output;
         }catch (IOException ioexcept){
             CoreTools.fatal(String.format("Failed to read from file%n%s%n", ioexcept));
@@ -80,8 +98,28 @@ class DataSequenceLookup {
 
     private static String[] getStatusDataSequenceFromFile(String filename){
         BufferedReader reader = openConfigFile(filename);
-        return null;
+        return readStatusTypeFromFile(reader);
     }
+    private static String[] readStatusTypeFromFile(BufferedReader reader){
+        try {
+            List<String> buffer = new ArrayList<>();
+            String nextline;
+
+            while ((nextline = reader.readLine()) != null)
+                buffer.add(nextline);
+
+            reader.close();
+
+            String[] output = new String[buffer.size()];
+            output = buffer.toArray(output);
+
+            return output;
+        }catch(IOException ioexcept){
+            CoreTools.fatal(String.format("Failed to read from file%n%s%n", ioexcept));
+            return null;
+        }
+    }
+
     private static BufferedReader openConfigFile(String filename, int attempt){
         try{
             BufferedReader reader = new BufferedReader(new FileReader(filename));
@@ -113,20 +151,18 @@ class DataSequenceLookup {
 
         }
     }
-    //TODO you will notice these two functions opperate in much the same way and can likely be refactored to reduce code duplication
     private static void genStatusConfig() throws IOException{
             FileWriter writer = new FileWriter(STATUS_DATA_SEQUENCE_FILE) ;
 
             for (String member : DEFAULT_STATUS_SEQUENCE){
-                writer.write(member);
+                writer.write(String.format("%s%n",member));
             }
             writer.close();
     }
     private static void genFlightConfig()throws IOException{
         FileWriter writer = new FileWriter(FLIGHT_DATA_SEQUENCE_FILE) ;
-
         for (DataType member : DEFAULT_FLIGHT_SEQUENCE){
-            writer.write(String.format("%s,%s",member.getTypeName(),member.getUnits()));
+            writer.write(String.format("%s,%s%n",member.getTypeName(),member.getUnits()));
         }
         writer.close();
     }
