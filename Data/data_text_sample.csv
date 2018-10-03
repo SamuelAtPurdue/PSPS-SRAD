@@ -1,0 +1,21 @@
+#Below is a sample text file showing the type of data that should be expected by the ground station.
+#included in place of the actual values is the size of the raw data and the units. All integers are 16 bit signed unless otherwise specified.
+#16 bit is choosen because that is the size that arduino supports.
+#altitude is unsigned because signing the 16 bit integer would limit the altitude to 32767m and we don't trust propulsion that much. by unsigning the integer the altitude is instead limited to 65535 m. 
+#this is formatted as a csv so it is easily imported into excel but this formatting will need to be handled on the ground
+#NOTICE: each as two values one from each redundant component.
+alt_1,16b unsigned int,m
+alt_2,16b unsigned int,m
+acc_1,16b int,m/s^2
+acc_2,16b int,m/s^2
+vel_1,16b int,m/s     #velocity 1 & 2 are predicted from other values because structures probably wouldn't appreciate us putting a pitot tube on the rocket
+vel_2,16b int,m/s
+prs_1,16b int,kPa
+prs_2,16b int,kPa
+png_1,16b int,ms      #time sent in ms seconds and hours truncated
+png_2,16b int,ms
+lng_1,32b float,deg   #Sent as a 32 bit float as that is native to arduino
+lng_2,32b float,deg   
+lat_1,32b float,deg
+lat_2,32b float,deg
+#####TODO ADD OTHER VALUES
