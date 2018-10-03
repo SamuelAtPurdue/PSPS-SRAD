@@ -8,6 +8,14 @@ set_epoch()
 
 Command Descriptions:
 ---------------------
+relay_enable/relay_disable
+  Enables/disables relays powering flight components such as sensors, buzzors, etc.
+  
+chip_sample_rate
+  Sets the frequency at which a chip takes measurements.
+  
+
+
 
 Parameters:
 -----------
