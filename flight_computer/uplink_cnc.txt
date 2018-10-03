@@ -1,0 +1,18 @@
+Commands:
+---------
+relay_enable(relay_id)
+relay_disable(relay_id)
+chip_sample_rate(chip_id, speed)
+set_epoch()
+
+
+Command Descriptions:
+---------------------
+
+Parameters:
+-----------
+relay_id: numerical id of relay
+chip_id: numerical id of chip
+speed: TBD
+
+
