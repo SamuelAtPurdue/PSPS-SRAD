@@ -1,6 +1,7 @@
 package com.psps;
+
 /**
- * Created by Samuel Hild on 9/29/2018.
+ * Created by Samuel Hild on 10/4/2018.
  */
-public class FlightDataFormatter implements Formatter {
+class FlightDataFormatter implements Formatter{
 }
