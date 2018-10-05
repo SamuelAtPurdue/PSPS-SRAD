@@ -1,5 +1,8 @@
 import FGU
+import board
+import busio
 import adafruit_lsm9ds1
+from objdict import ObjDict
 
 ### resources ###
 

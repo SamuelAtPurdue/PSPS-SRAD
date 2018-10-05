@@ -1,8 +1,5 @@
-import board
-import busio
 import time
 import json
-from objdict import ObjDict
 import math
 
 # Data Packet Types
