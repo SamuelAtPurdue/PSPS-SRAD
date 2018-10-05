@@ -1,4 +1,5 @@
 import time
+import datetime
 import json
 import math
 
@@ -25,6 +26,14 @@ _unit = [_i_hat, _j_hat, _k_hat]
 def start_epoch():
   global t0
   t0 = time.time()
+
+# Get current time relative to the epoch
+def get_time():
+	return time.time() - t0
+
+def pretty_time():
+	global t0pretty
+	t0pretty = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
 
 
 # Finds the magnitude of a 3D vector

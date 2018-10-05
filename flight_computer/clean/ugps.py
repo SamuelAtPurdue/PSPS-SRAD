@@ -8,3 +8,5 @@ def _get():
 	return session.next()
 
 setattr(gps, 'get', _get)
+
+print("Ultimate GPS is object 'gps'")
