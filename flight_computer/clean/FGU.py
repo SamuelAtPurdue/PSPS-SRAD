@@ -52,8 +52,8 @@ def dot(vector_a, vector_b):
 
 # Finds the angle between two 3D vectors
 def angle_between(vector_a, vector_b):
-	dots = _dot(vector_a, vector_b)
-	mags = _magnitude(vector_a) * _magnitude(vector_b)
+	dots = dot(vector_a, vector_b)
+	mags = magnitude(vector_a) * magnitude(vector_b)
 	combined = dots / mags
 	return math.acos(combined)
 

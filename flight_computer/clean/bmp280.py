@@ -23,6 +23,8 @@ def _get(self):
   self.update()
   return self.data
 
+setattr(adafruit_bmp280.Adafruit_BMP280_I2C, 'get', _get)
+
 i2c = busio.I2C(board.SCL, board.SDA)
 bmp = adafruit_bmp280.Adafruit_BMP280_I2C(i2c)
 
