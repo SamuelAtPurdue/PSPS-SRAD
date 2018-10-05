@@ -4,12 +4,40 @@ import json
 import math
 
 # Data Packet Types
-
 class packet_type():
   LSM9DS1 = 0
   BMP280  = 1
   UGPS    = 2
 
+class mode():
+  standby = 0
+  flight = 1
+# 
+class sampling_control():
+  is_active = False
+  mode = FGU.mode.standby
+  record = False
+  
+  members = []
+  
+  
+  
+
+class sampling():
+  def __init__(self, parent, flight_rate, standby_rate = None)
+    self.parent = parent
+    self.flight_rate = flight_rate
+    
+    if standby_rate == None:
+      self.has_standby = False
+    else:
+      self.standby_rate = standby_rate
+      self.has_standby = standby
+
+  def loop(self):
+    while FGU.sampling_control.is_active == True:
+      parent.update()
+      
 # List vector component indices
 x = 0
 y = 1
@@ -24,16 +52,14 @@ _unit = [_i_hat, _j_hat, _k_hat]
 
 # Starts Epoch
 def start_epoch():
-  global t0
+  global t0, t0_datetime
   t0 = time.time()
-
-# Get current time relative to the epoch
-def get_time():
+  t0_datetime = datetime.datetime.fromtimestamp(t0).strftime('%Y-%m-%d_%H-%M-%S')
+  print('Epoch Started at:', t0_datetime)
+  
+# Get current timestamp relative to the epoch
+def get_timestamp():
 	return time.time() - t0
-
-def pretty_time():
-	global t0pretty
-	t0pretty = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
 
 
 # Finds the magnitude of a 3D vector
@@ -77,4 +103,4 @@ def absolute_angles(vector):
 	return angles
   
 start_epoch()
-print("Epoch Started.")
+

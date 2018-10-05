@@ -11,7 +11,7 @@ def _update(self):
   self.data = ObjDict()
   self.data.type = FGU.packet_type.BMP280
   
-  self.data.timestamp = time.time() - FGU.t0
+  self.data.timestamp = FGU.get_timestamp()
   
   self.data.temp = self.temperature
   self.data.pres = self.pressure
@@ -19,8 +19,9 @@ def _update(self):
 
 setattr(adafruit_bmp280.Adafruit_BMP280_I2C, 'update', _update)
 
-def _get(self):
-  self.update()
+def _get(self, new = 0):
+  if new == 1:
+    self.update()
   return self.data
 
 setattr(adafruit_bmp280.Adafruit_BMP280_I2C, 'get', _get)

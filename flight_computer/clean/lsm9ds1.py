@@ -18,7 +18,7 @@ def _update(self):
   self.data = ObjDict()
   self.data.type = FGU.packet_type.LSM9DS1
   
-  self.data.timestamp = time.time() - FGU.t0
+  self.data.timestamp = FGU.get_timestamp()
   
   self.data.accel = list(self.accelerometer)
   self.data.accel_angles = FGU.absolute_angles(self.data.accel)
@@ -34,24 +34,25 @@ def _update(self):
 
 setattr(adafruit_lsm9ds1.LSM9DS1_I2C, 'update', _update)
 
-def _get(self):
-  self.update()
+def _get(self, new = 0):
+  if new == 1:
+    self.update()
   return self.data
   
 setattr(adafruit_lsm9ds1.LSM9DS1_I2C, 'get', _get)
 
-def _setup(self):
-  pass
+def _setup(self, flight_rate, standby_rate = None):
+  self.sampling = FGU.sampling(self, flight_rate, standby_rate)
+  imu.flight_ready = True
+  print('imu is flight ready with flight rate of {} Hz and a standby rate of {} Hz'.format(
+  flight_rate, standby_rate))
 
 setattr(adafruit_lsm9ds1.LSM9DS1_I2C, 'setup', _setup)
 
 
 i2c = busio.I2C(board.SCL, board.SDA)
 imu = adafruit_lsm9ds1.LSM9DS1_I2C(i2c)
-
-imu.setup()
-
-
+imu.flight_ready = False
 
 print("LSM9DS1 is object 'imu'")
 
