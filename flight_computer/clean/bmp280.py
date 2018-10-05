@@ -2,6 +2,7 @@ import FGU
 import board
 import busio
 import adafruit_bmp280
+import time
 from objdict import ObjDict
 
 ### Functions applied to instance ###

@@ -2,6 +2,7 @@ import FGU
 import board
 import busio
 import adafruit_lsm9ds1
+import time
 from objdict import ObjDict
 
 ### resources ###
