@@ -24,7 +24,17 @@ public interface Formatter {
      * gets the formatted data structure.
      * @return formatted data structure dependant on instance of the class.
      */
-    Object getFormattedData();
+    String getFormattedData();
+
+    /**
+     * Clears the data from the formatter class
+     */
+    void clear();
+
+    /**
+     * @return formatted data structure array
+     */
+    Object[] getFormattedDataStructure();
 
     /**
      * Simply dumps data to command line for Debugging

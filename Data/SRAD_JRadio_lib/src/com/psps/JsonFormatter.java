@@ -49,8 +49,7 @@ class JsonFormatter implements Formatter {
 
     //parses FlightData to a json value
     private String parseFlightData(FlightData data){
-        String outdata = String.format("\"%s\":{\"value\" : %d, \"units\" : \"%s\"}",data.getType(), data.getValue(), data.getUnits());
-        return outdata;
+        return String.format("\"%s\":{\"value\" : %f, \"units\" : \"%s\"}",data.getType(), data.getValue(), data.getUnits());
     }
 
     //parses StatusData to a json value
@@ -89,4 +88,13 @@ class JsonFormatter implements Formatter {
     public String getFormattedData() {
         return formattedData;
     }
+
+    public void clear(){
+        formattedData = "";
+    }
+
+    @Override
+    public Object[] getFormattedDataStructure() {
+        return new Object[0];
+    }//TODO implement
 }

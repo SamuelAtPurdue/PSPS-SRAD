@@ -76,6 +76,21 @@ public class CommandLineInterface {
     }
     private static void execute(String[] args){
         conditionalPrint("[@@] debug: executing command: %s%n", args[0]);
+
+        //TEMPORARY PLACE FOR TESTING CODE
+        Formatter jsonformat = DataFormatter.getJsonFormatter();
+        Formatter flightform = DataFormatter.getFlightDataFormatter();
+
+        try {
+            Float[] randdata = new Float[]{123124f,1234123f,12346f,1234123f,1234f,12354f,153431f,1345f,1345f};
+            flightform.pack(randdata);
+            jsonformat.pack(flightform.getFormattedDataStructure());
+            String dat = jsonformat.getFormattedData();
+            System.out.println(dat);
+            jsonformat.pack(new StatusData(0,true));
+            String dat2 = jsonformat.getFormattedData();
+            // System.out.println(dat2);
+        }catch (InvalidDataTypeException in){}
     }
 
 

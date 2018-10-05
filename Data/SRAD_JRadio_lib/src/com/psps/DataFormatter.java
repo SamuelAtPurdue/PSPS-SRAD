@@ -17,7 +17,7 @@ public class DataFormatter{
     /**
      * @return new ErrorDataFormatter Instance
      */
-    public static ErrorDataFormatter getErrorDataFormatter(){return new ErrorDataFormatter();}
+   // public static ErrorDataFormatter getErrorDataFormatter(){return new ErrorDataFormatter();}
 
     /**
      * @return new FlightDataFormatter Instance
@@ -27,10 +27,10 @@ public class DataFormatter{
     /**
      * @return new CommandDataFormatter Instance
      */
-    public static CommandDataFormatter getCommandDataFormatter(){return new CommandDataFormatter();}
+   // public static CommandDataFormatter getCommandDataFormatter(){return new CommandDataFormatter();}
 
     /**
      * @return new StatusDataFormatter Instance
      */
-    public static StatusDataFormatter getStatusDataFormatter(){return new StatusDataFormatter();}
+   // public static StatusDataFormatter getStatusDataFormatter(){return new StatusDataFormatter();}
 }

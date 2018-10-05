@@ -7,12 +7,12 @@ package com.psps;
  */
 class FlightData {
     private String datatype = "[null]";
-    private short value = 0;         //all values are stored in shorts for compatibility.
+    private float value = 0;         //all values are stored in shorts for compatibility.
     private String units = "[null";
     private final int index;
 
     //Constructor MUST have an index or it will have no data type
-    public FlightData(int index, short value) throws InvalidDataTypeException{
+    public FlightData(int index, float value) throws InvalidDataTypeException{
         this.value = value;
         this.index = index;
         this.datatype = DataSequenceLookup.lookupFlightDataType(index).getTypeName();
@@ -20,13 +20,13 @@ class FlightData {
     }
     //overloaded constructor
     public FlightData(int index) throws InvalidDataTypeException{
-        this(index,(short) 0);
+        this(index,(float) 0);
     }
 
     //Object Overrides
     @Override
     public String toString(){
-        return String.format("%s: %d %s",datatype,value,units);
+        return String.format("%s: %f %s", datatype, value, units);
     }
     @Override
     public boolean equals(Object comparevalue){
@@ -38,7 +38,7 @@ class FlightData {
         return datatype;
     }
 
-    short getValue() {
+    float getValue() {
         return value;
     }
 
