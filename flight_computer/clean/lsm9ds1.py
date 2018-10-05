@@ -8,12 +8,11 @@ x = 0
 y = 1
 z = 2
 
-
-
 ### Functions applied to instance ###
 
 def _update(self):
 	self.data = ObjDict()
+  self.data.type = FGU.packet_type.LSM9DS1
 
 	self.data.timestamp = time.time() - FGU.t0
 
@@ -30,6 +29,12 @@ def _update(self):
 
 
 setattr(adafruit_lsm9ds1.LSM9DS1_I2C, 'update', _update)
+
+def _get(self):
+  self.update()
+  return self.data
+  
+setattr(adafruit_lsm9ds1.LSM9DS1_I2C, 'get', _get)
 
 def _setup(self):
   pass

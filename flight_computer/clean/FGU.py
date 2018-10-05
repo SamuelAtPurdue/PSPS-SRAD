@@ -5,15 +5,26 @@ import json
 from objdict import ObjDict
 import math
 
-def start_epoch():
-  global t0
-  t0 = time.time()
+# Data Packet Types
+
+class packet_type():
+  LSM9DS1 = 0
+  BMP280  = 1
+  UGPS    = 2
+
 
 # Unit Vectors
 _i_hat = [1, 0, 0]
 _j_hat = [0, 1, 0]
 _k_hat = [0, 0, 1]
 _unit = [_i_hat, _j_hat, _k_hat]
+
+
+# Starts Epoch
+def start_epoch():
+  global t0
+  t0 = time.time()
+
 
 # Finds the magnitude of a 3D vector
 def magnitude(vector):
