@@ -9,6 +9,10 @@ class packet_type():
   BMP280  = 1
   UGPS    = 2
 
+# List vector component indices
+x = 0
+y = 1
+z = 2
 
 # Unit Vectors
 _i_hat = [1, 0, 0]
@@ -58,9 +62,9 @@ def angle_between(vector_a, vector_b):
 # Returns a signed 3D vector
 def absolute_angles(vector):
 	angles = [0, 0, 0]
-	angles[x] = math.copysign(_angle_between(vector, _unit[x]), vector[x])
-	angles[y] = math.copysign(_angle_between(vector, _unit[y]), vector[y])
-	angles[z] = math.copysign(_angle_between(vector, _unit[z]), vector[z])
+	angles[x] = math.copysign(angle_between(vector, _unit[x]), vector[x])
+	angles[y] = math.copysign(angle_between(vector, _unit[y]), vector[y])
+	angles[z] = math.copysign(angle_between(vector, _unit[z]), vector[z])
 	return angles
   
 start_epoch()
