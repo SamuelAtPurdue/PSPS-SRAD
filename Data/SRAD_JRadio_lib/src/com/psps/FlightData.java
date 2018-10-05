@@ -3,6 +3,7 @@ package com.psps;
 /**
  * Created by Samuel Hild on 10/1/2018.
  * A data structure for flight data.
+ * TODO Refactor
  */
 class FlightData {
     private String datatype = "[null]";
@@ -33,27 +34,15 @@ class FlightData {
     }
 
     //accessors
-    String getDatatype() {
+    String getType() {
         return datatype;
-    }
-
-    void setDatatype(String datatype) {
-        this.datatype = datatype;
     }
 
     short getValue() {
         return value;
     }
 
-    void setValue(short value) {
-        this.value = value;
-    }
-
     String getUnits() {
         return units;
-    }
-
-    void setUnits(String units) {
-        this.units = units;
     }
 }

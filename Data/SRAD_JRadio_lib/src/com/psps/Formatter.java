@@ -12,7 +12,7 @@ public interface Formatter {
      * This data is stored as the specified data structure.
      * @param dataIn Data in the form of a string or an array
      */
-    void pack(Object... dataIn);
+    void pack(Object... dataIn) throws InvalidDataTypeException;
 
     /**
      * Unpacks the object to unformatted data

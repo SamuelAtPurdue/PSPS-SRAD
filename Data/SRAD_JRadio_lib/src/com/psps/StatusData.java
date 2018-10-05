@@ -2,6 +2,8 @@ package com.psps;
 
 /**
  * Created by Samuel Hild on 10/2/2018.
+ * data structure class for status data.
+ * TODO refactor to fit the data structure form better
  */
 class StatusData {
     private String datatype = "[null]";
@@ -32,6 +34,7 @@ class StatusData {
     private void constructStatusData(int index, boolean value) throws InvalidDataTypeException{
         this.value = value;
     }
+
     //Object Overrides
     @Override
     public String toString(){
@@ -43,7 +46,7 @@ class StatusData {
     }
 
     //accessors
-    public String getDatatype() {
+    public String getType() {
         return datatype;
     }
 
@@ -51,7 +54,7 @@ class StatusData {
         this.datatype = datatype;
     }
 
-    public boolean isValue() {
+    public boolean getValue() {
         return value;
     }
 
