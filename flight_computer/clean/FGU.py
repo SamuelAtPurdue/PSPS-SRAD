@@ -53,9 +53,12 @@ class sampling():
       if sampling_control.mode == mode.standby:
         rate = self.standby_rate
         
-      time.sleep(1 / rate - time.time + t1)
+      time.sleep(0.9 / rate - time.time() + t1)
+      while(time.time() < t1 + 1 / rate):
+        time.sleep(0.01)
         
     print(self.parent.name,":",count)
+    print(time.time()-t2)
     
   def loop2(self):
     take_sample = True
