@@ -46,7 +46,7 @@ class sampling():
       t1 = time.time()
       self.parent.update()
       count = count + 1
-      #print(self.parent.get(),'\n')
+      #print(self.parent.get(),'\n') # prints to console
       
       rate = self.flight_rate
       
@@ -57,40 +57,10 @@ class sampling():
       while(time.time() < t1 + 1 / rate):
         time.sleep(0.01)
         
-    print(self.parent.name,":",count)
+    print(self.parent.name,":",count) #debug counting
     print(time.time()-t2)
     
-  def loop2(self):
-    take_sample = True
-    t1 = time.time()
-    t2 = time.time()
     
-    count = 0
-    
-    while sampling_control.is_active == True:
-      if take_sample == True:
-        t1 = time.time()
-        self.parent.update()
-        count = count + 1
-        #print(self.parent.get(),'\n')
-        take_sample = False
-        continue
-        
-      else:
-        rate = self.flight_rate
-        
-        from FGU import mode
-        if sampling_control.mode == mode.standby:
-          rate = self.standby_rate
-        
-        if time.time() - t1 > 1 / rate:
-          take_sample = True
-          continue
-      
-        time.sleep(1 / rate / 20)
-        
-    print(self.parent.name,":",count)
-
 def activate():
   abort_reason = None
   for member in sampling_control.members:
