@@ -37,6 +37,27 @@ class sampling():
     sampling_control.members.append(parent)
 
   def loop(self):
+    t1 = time.time()
+    t2 = time.time()
+    
+    count = 0
+    from FGU import mode
+    while sampling_control.is_active == True:
+      t1 = time.time()
+      self.parent.update()
+      count = count + 1
+      #print(self.parent.get(),'\n')
+      
+      rate = self.flight_rate
+      
+      if sampling_control.mode == mode.standby:
+        rate = self.standby_rate
+        
+      time.sleep(1 / rate - time.time + t1)
+        
+    print(self.parent.name,":",count)
+    
+  def loop2(self):
     take_sample = True
     t1 = time.time()
     t2 = time.time()
