@@ -45,6 +45,7 @@ class sampling():
     while sampling_control.is_active == True:
       t1 = time.time()
       self.parent.update()
+      broadcast(self.parent.get())
       count = count + 1
       #print(self.parent.get(),'\n') # prints to console
       
@@ -60,6 +61,9 @@ class sampling():
     print(self.parent.name,":",count) #debug counting
     print(time.time()-t2)
     
+    
+def broadcast(data):
+  pass
     
 def activate():
   abort_reason = None
