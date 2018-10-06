@@ -2,6 +2,7 @@ import time
 import datetime
 import json
 import math
+import thread
 
 # Data Packet Types
 class packet_type():
@@ -34,11 +35,55 @@ class sampling():
     else:
       self.standby_rate = standby_rate
       self.has_standby = True
+      
+    sampling_control.members.append(parent)
 
   def loop(self):
+    take_sample = True
+    t1 = time.time()
+    t2 = time.time()
     while FGU.sampling_control.is_active == True:
-      parent.update()
+      if take_sample == True:
+        t1 = time.time()
+        parent.update()
+        print(parent.get())
+        take_sample = False
+        continue
+        
+      else:
+        comparison = self.flight_rate
+        
+        from FGU import mode
+        if self.has_standby == True and sampling_control.mode = mode.standby:
+          comparison = self.standby_rate
+        
+        if time.time() - t1 > 1 / comparison:
+          take_sample = True
+          continue
       
+        time.sleep(1 / comparison / 10)
+        
+
+def activate():
+  abort_reason = None
+  for member in sampling_control.members:
+    if member.flight_ready == False:
+      abort_reason = member
+      break
+  
+  if abort_reason != None:
+    print('Activation aborted because {} is not flight ready.'.format(
+    abort_reason.name))
+    return
+  
+  sampling_control.is_active = True
+  for member in sampling_control.members:
+    thread.start_new_thread(member.sampling.loop)
+    
+
+def deactivate():
+  sampling_control.is_active = False
+        
 # List vector component indices
 x = 0
 y = 1

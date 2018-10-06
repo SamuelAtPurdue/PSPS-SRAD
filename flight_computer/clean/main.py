@@ -8,3 +8,4 @@ from ugps import *
 print()
 
 imu.setup(flight_rate = 10, standby_rate = 1)
+bmp.setup(flight_rate = 1)

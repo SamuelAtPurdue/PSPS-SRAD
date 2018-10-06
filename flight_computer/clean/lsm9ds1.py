@@ -44,7 +44,7 @@ setattr(adafruit_lsm9ds1.LSM9DS1_I2C, 'get', _get)
 def _setup(self, flight_rate, standby_rate = None):
   self.sampling = FGU.sampling(self, flight_rate, standby_rate)
   imu.flight_ready = True
-  print('imu is flight ready with flight rate of {} Hz and a standby rate of {} Hz'.format(
+  print('imu is flight ready with flight rate of {} Hz and a standby rate of {} Hz.'.format(
   flight_rate, standby_rate))
 
 setattr(adafruit_lsm9ds1.LSM9DS1_I2C, 'setup', _setup)
@@ -53,6 +53,7 @@ setattr(adafruit_lsm9ds1.LSM9DS1_I2C, 'setup', _setup)
 i2c = busio.I2C(board.SCL, board.SDA)
 imu = adafruit_lsm9ds1.LSM9DS1_I2C(i2c)
 imu.flight_ready = False
+imu.name = 'imu'
 
 print("LSM9DS1 is object 'imu'")
 
