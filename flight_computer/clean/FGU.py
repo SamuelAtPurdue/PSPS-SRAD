@@ -2,13 +2,13 @@ import time
 import datetime
 import json
 import math
-import thread
+import _thread as thread
 
 # Data Packet Types
 class packet_type():
-  LSM9DS1 = 0
-  BMP280  = 1
-  UGPS    = 2
+  LSM9DS1 = 'lsm9ds1'
+  BMP280  = 'bmp280'
+  UGPS    = 'ugps'
 
 class mode():
   standby = 0
@@ -17,7 +17,7 @@ class mode():
 class sampling_control():
   is_active = False
   from FGU import mode
-  mode = mode.standby
+  mode = mode.flight
   record = False
   
   members = []
@@ -31,38 +31,41 @@ class sampling():
     self.flight_rate = flight_rate
     
     if standby_rate == None:
-      self.has_standby = False
+      self.standby_rate = flight_rate
     else:
       self.standby_rate = standby_rate
-      self.has_standby = True
-      
     sampling_control.members.append(parent)
 
   def loop(self):
     take_sample = True
     t1 = time.time()
     t2 = time.time()
-    while FGU.sampling_control.is_active == True:
+    
+    count = 0
+    
+    while sampling_control.is_active == True:
       if take_sample == True:
         t1 = time.time()
-        parent.update()
-        print(parent.get())
+        self.parent.update()
+        count = count + 1
+        #print(self.parent.get(),'\n')
         take_sample = False
         continue
         
       else:
-        comparison = self.flight_rate
+        rate = self.flight_rate
         
         from FGU import mode
-        if self.has_standby == True and sampling_control.mode = mode.standby:
-          comparison = self.standby_rate
+        if sampling_control.mode == mode.standby:
+          rate = self.standby_rate
         
-        if time.time() - t1 > 1 / comparison:
+        if time.time() - t1 > 1 / rate:
           take_sample = True
           continue
       
-        time.sleep(1 / comparison / 10)
+        time.sleep(1 / rate / 20)
         
+    print(self.parent.name,":",count)
 
 def activate():
   abort_reason = None
@@ -78,7 +81,7 @@ def activate():
   
   sampling_control.is_active = True
   for member in sampling_control.members:
-    thread.start_new_thread(member.sampling.loop)
+    thread.start_new_thread(member.sampling.loop,())
     
 
 def deactivate():
