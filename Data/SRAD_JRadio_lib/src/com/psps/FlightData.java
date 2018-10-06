@@ -9,18 +9,12 @@ class FlightData {
     private String datatype = "[null]";
     private float value = 0;         //all values are stored in shorts for compatibility.
     private String units = "[null";
-    private final int index;
 
     //Constructor MUST have an index or it will have no data type
-    public FlightData(int index, float value) throws InvalidDataTypeException{
+    public FlightData(String datatype, float value, String units){
         this.value = value;
-        this.index = index;
-        this.datatype = DataSequenceLookup.lookupFlightDataType(index).getTypeName();
-        this.units = DataSequenceLookup.lookupFlightDataType(index).getUnits();
-    }
-    //overloaded constructor
-    public FlightData(int index) throws InvalidDataTypeException{
-        this(index,(float) 0);
+        this.datatype = datatype;
+        this.units = units;
     }
 
     //Object Overrides
@@ -29,8 +23,8 @@ class FlightData {
         return String.format("%s: %f %s", datatype, value, units);
     }
     @Override
-    public boolean equals(Object comparevalue){
-        return (this.toString().equals(comparevalue.toString()));
+    public boolean equals(Object compareValue){
+        return (this.toString().equals(compareValue.toString()));
     }
 
     //accessors

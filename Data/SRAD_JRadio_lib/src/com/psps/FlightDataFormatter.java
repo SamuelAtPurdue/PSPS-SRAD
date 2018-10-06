@@ -1,7 +1,6 @@
 package com.psps;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Samuel Hild on 10/4/2018.
@@ -22,7 +21,8 @@ public class FlightDataFormatter implements Formatter{
             throw new InvalidDataTypeException("flight data not formatted as 32b float");
     }
     private FlightData parseFloatToFlightData(float data, int index) throws InvalidDataTypeException{
-        return new FlightData(index, data);
+        DataType dataFromTable = DataSequenceLookup.lookupFlightDataType(index);
+        return new FlightData(dataFromTable.getTypeName(), data, dataFromTable.getUnits());
     }
 
     @Override
