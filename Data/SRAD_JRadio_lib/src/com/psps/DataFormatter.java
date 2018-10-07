@@ -32,5 +32,5 @@ public class DataFormatter{
     /**
      * @return new StatusDataFormatter Instance
      */
-   // public static StatusDataFormatter getStatusDataFormatter(){return new StatusDataFormatter();}
+   public static StatusDataFormatter getStatusDataFormatter(){return new StatusDataFormatter();}
 }

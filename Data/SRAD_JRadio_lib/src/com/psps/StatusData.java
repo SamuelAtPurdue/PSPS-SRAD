@@ -3,42 +3,20 @@ package com.psps;
 /**
  * Created by Samuel Hild on 10/2/2018.
  * data structure class for status data.
- * TODO refactor to fit the data structure form better
  */
 class StatusData {
-    private String datatype = "[null]";
+    private String typename = "[null]";
     private boolean value = false;
-    private final int index;
 
-    private StatusData(int index) throws InvalidDataTypeException{
-        this.index = index;
-        this.datatype = DataSequenceLookup.lookupStatusDataType(index);
-    }
-
-    public StatusData(int index, int boolvalue) throws InvalidDataTypeException{
-        this(index);
-
-        if (boolvalue == 1)
-            constructStatusData(index, true);
-        if (boolvalue == 0)
-            constructStatusData(index, false);
-        else
-            throw new InvalidDataTypeException("malformed status data: binary digit or boolean required");
-    }
-
-    public StatusData(int index, boolean boolvalue) throws InvalidDataTypeException{
-        this(index);
-        constructStatusData(index, boolvalue);
-    }
-
-    private void constructStatusData(int index, boolean value) throws InvalidDataTypeException{
+    public StatusData(String typename, boolean value){
+        this.typename = typename;
         this.value = value;
     }
 
     //Object Overrides
     @Override
     public String toString(){
-        return String.format("%s: %b",datatype,value);
+        return String.format("%s: %b",typename,value);
     }
     @Override
     public boolean equals(Object compare){
@@ -47,22 +25,10 @@ class StatusData {
 
     //accessors
     public String getType() {
-        return datatype;
-    }
-
-    public void setDatatype(String datatype) {
-        this.datatype = datatype;
+        return typename;
     }
 
     public boolean getValue() {
         return value;
-    }
-
-    public void setValue(boolean value) {
-        this.value = value;
-    }
-
-    public int getIndex() {
-        return index;
     }
 }
