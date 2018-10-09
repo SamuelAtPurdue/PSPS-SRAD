@@ -39,16 +39,62 @@ class Periodic_Scheduler():
     time.sleep(t)
     self.stop()
     print('stopped')
+
+ 
+
+
+class controller():
+  INTERVAL = 1    ## time in s
+  RATE = 1        ## Hz
   
-def periodic_event():
-  print(datetime.datetime.now())
-  time.sleep(3)
- 
+  members = []
+  poll_rates = []
+  _poll_id = 0
+  
+  
+  def set_rate(rate):
+    controller.RATE = rate
+    controller.INTERVAL = 1 / rate
+  
+  def add_member(new_member, poll_rate):
+    controller.members.append(new_member)
+    controller.poll_rates.append(poll_rate)
+    
+  def poll()
+    controller._poll_id += 1
+    
+    for member, poll_rate in zip(controller.members, controller.poll_rates):
+      if poll_rate / controller.RATE * controller._poll_id % 1 == 0:
+        thread.start_new_thread(member.get,())
+    if(controller._poll_id > controller.RATE):
+      controller._poll_id = 0
+    
+class imu():
+  def get():
+    print('imu:', datetime.datetime.now())
 
+class bmp():
+  def get():
+    print('bmp:', datetime.datetime.now())
+    
+    
+controller.set_rate(10)
+controller.add_member(imu, 10)
+controller.add_member(bmp, 1)
 
-
-
- 
+ps = Periodic_Scheduler()
+ps.setup(controller.INTERVAL, periodic_event)    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 def measure(fct, t):
   t0 = time.time()
   fct(t)
@@ -61,7 +107,5 @@ def baseline(t):
   time.sleep(10)
   
   
-INTERVAL = 1
-ps = Periodic_Scheduler()
-ps.setup(INTERVAL, periodic_event)
+
 
