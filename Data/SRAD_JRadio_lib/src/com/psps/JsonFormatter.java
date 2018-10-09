@@ -20,6 +20,8 @@ class JsonFormatter implements Formatter {
     private String typedata;
     private String formattedData = "";
 
+    private JsonObject jsondata;
+
     /**
      * Packs the data to a json format from a internal data structure.
      * @param dataIn Data in the form of either a FlightData or StatusData data structure

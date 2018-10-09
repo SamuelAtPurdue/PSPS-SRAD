@@ -38,4 +38,13 @@ public final class CoreTools {
     void setVerbose(boolean verbose){
         this.verbose = verbose;
     }
+
+    /**
+     * Replaces Square Brackets with curly braces
+     * @param in input string
+     * @return newly formatted string
+     */
+    public static String replaceSquareWithCurly(String in){
+        return in.replace("[","{").replace("]","}");
+    }
 }
