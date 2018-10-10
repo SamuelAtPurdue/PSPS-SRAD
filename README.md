@@ -60,6 +60,14 @@ The following are not mission critical but are goals but are planned for the fut
   TBD
 </p>
 <br>
+<h3>Code Dependencies</h3>
+<hr>
+<p>
+  <ul>
+    <li><b>json-simple:</b> https://github.com/fangyidong/json-simple</li>
+  </ul>
+</p>
+<br>
 <br>
 <h3>Project Structure</h3>
 <hr>
