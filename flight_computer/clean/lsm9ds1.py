@@ -48,11 +48,13 @@ def _setup(self, flight_rate, standby_rate = None):
   self.rate = [flight_rate, standby_rate]
   
   imu.flight_ready = True
-  print('imu is flight ready with flight rate of {} Hz and a standby rate of {} Hz.'.format(
-  self.sampling.flight_rate, self.sampling.standby_rate))
+ # print('imu is flight ready with flight rate of {} Hz and a standby rate of {} Hz.'.format(
+ #  self.sampling.flight_rate, self.sampling.standby_rate))
 
 setattr(adafruit_lsm9ds1.LSM9DS1_I2C, 'setup', _setup)
 
+
+d = 3
 
 i2c = busio.I2C(board.SCL, board.SDA)
 imu = adafruit_lsm9ds1.LSM9DS1_I2C(i2c)

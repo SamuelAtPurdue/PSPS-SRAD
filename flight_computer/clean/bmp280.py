@@ -33,8 +33,8 @@ def _setup(self, flight_rate, standby_rate = None):
   self.rate = [flight_rate, standby_rate]
 
   bmp.flight_ready = True
-  print('bmp is flight ready with flight rate of {} Hz and a standby rate of {} Hz.'.format(
-  self.sampling.flight_rate, self.sampling.standby_rate))
+#  print('bmp is flight ready with flight rate of {} Hz and a standby rate of {} Hz.'.format(
+#  self.sampling.flight_rate, self.sampling.standby_rate))
 
 setattr(adafruit_bmp280.Adafruit_BMP280_I2C, 'setup', _setup)
 
