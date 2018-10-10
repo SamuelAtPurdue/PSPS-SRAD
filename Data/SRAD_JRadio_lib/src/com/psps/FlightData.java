@@ -3,22 +3,20 @@ package com.psps;
 /**
  * Created by Samuel Hild on 10/1/2018.
  * A data structure for flight data.
- * TODO Refactor
  */
-class FlightData {
-    private String datatype;
-    private float value;         //all values are stored in shorts for compatibility.
+class FlightData implements GenericData{
+    private String type;
+    private float value;
 
     //Constructor MUST have an index or it will have no data type
-    public FlightData(String datatype, float value) {
+    public FlightData(String dataType, float value) {
         this.value = value;
-        this.datatype = datatype;
+        this.type = dataType;
     }
 
-    //Object Overrides
     @Override
     public String toString() {
-        return String.format("%s: %f", datatype, value);
+        return String.format("\"%s\":%f", type, value);
     }
 
     @Override
@@ -26,12 +24,11 @@ class FlightData {
         return (this.toString().equals(compareValue.toString()));
     }
 
-    //accessors
-    String getType() {
-        return datatype;
+    public String getType() {
+        return type;
     }
 
-    float getValue() {
+    public Object getValue() {
         return value;
     }
 }

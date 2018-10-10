@@ -26,11 +26,6 @@ public class FlightDataFormatter implements Formatter{
     }
 
     @Override
-    public Object[] unpack() {
-        return new Object[0];       //TODO implement
-    }
-
-    @Override
     public String getFormattedData() {
         return formattedData;
     }

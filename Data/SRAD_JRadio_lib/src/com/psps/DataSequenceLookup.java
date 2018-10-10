@@ -3,7 +3,6 @@ package com.psps;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -18,11 +17,13 @@ class DataSequenceLookup {
     private static final String FLIGHT_DATA_SEQUENCE_FILE = "flightdatasequence.csv";
     private static final String STATUS_DATA_SEQUENCE_FILE = "statusdatasequence.csv";
 
+    //Incoming Sequences
     private static final String[] FLIGHT_DATA_SEQUENCE;
     private static final String[] STATUS_DATA_SEQUENCE;
 
     //Default Sequences
     private static final String[] DEFAULT_STATUS_SEQUENCE = new String[]{"signal"}; //TODO add Defaults for status once hardware is chosen
+
     private static final String[] DEFAULT_FLIGHT_SEQUENCE = new String[]{
             "Altitude (m)", "Pressure (kPa)", "Acceleration (m/s^2)", "Longitude", "Latitude",
             "Pitch Attitude", "Yaw Attitude", "Roll Attitude","Magnetic Heading","Velocity (m/s)","Rate of Climb (m/s)"
@@ -69,20 +70,18 @@ class DataSequenceLookup {
     private static String[] readFile(BufferedReader reader){
         try {
             List<String> buffer = new ArrayList<>();
-            String nextline;
+            String nextLine;
 
-            while ((nextline = reader.readLine()) != null)
-                buffer.add(nextline);
+            while ((nextLine = reader.readLine()) != null)
+                buffer.add(nextLine);
 
             reader.close();
 
             String[] output = new String[buffer.size()];
-            output = buffer.toArray(output);
-
-            return output;
+            return buffer.toArray(output);
         }catch (IOException ioexcept){
             CoreTools.fatal(String.format("Failed to read from file%n%s%n", ioexcept));
-            return null;
+            return null;    //will never be reached
         }
     }
 
