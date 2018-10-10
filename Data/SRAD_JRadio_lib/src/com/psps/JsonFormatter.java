@@ -20,7 +20,6 @@ class JsonFormatter implements Formatter {
     private String typedata;
     private String formattedData = "";
 
-    private JsonObject jsondata;
 
     /**
      * Packs the data to a json format from a internal data structure.
@@ -51,7 +50,7 @@ class JsonFormatter implements Formatter {
 
     //parses FlightData to a json value
     private String parseFlightData(FlightData data){
-        return String.format("\"%s\":{\"value\" : %f, \"units\" : \"%s\"}",data.getType(), data.getValue(), data.getUnits());
+        return String.format("\"%s\": %f}",data.getType(), data.getValue());
     }
 
     //parses StatusData to a json value
