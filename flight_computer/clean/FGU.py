@@ -3,7 +3,7 @@ import datetime
 import json
 import math
 import _thread as thread
-
+import measurement_scheduler
 # Data Packet Types
 class packet_type():
   LSM9DS1 = 'lsm9ds1'
@@ -14,77 +14,18 @@ class mode():
   standby = 0
   flight = 1
 # 
-class sampling_control():
-  is_active = False
-  from FGU import mode
-  mode = mode.flight
-  record = False
-  
-  members = []
-  
-  
-  
 
-class sampling():
-  def __init__(self, parent, flight_rate, standby_rate = None):
-    self.parent = parent
-    self.flight_rate = flight_rate
-    
-    if standby_rate == None:
-      self.standby_rate = flight_rate
-    else:
-      self.standby_rate = standby_rate
-    sampling_control.members.append(parent)
 
-  def loop(self):
-    t1 = time.time()
-    t2 = time.time()
-    
-    count = 0
-    from FGU import mode
-    while sampling_control.is_active == True:
-      t1 = time.time()
-      self.parent.update()
-      broadcast(self.parent.get())
-      count = count + 1
-      #print(self.parent.get(),'\n') # prints to console
-      
-      rate = self.flight_rate
-      
-      if sampling_control.mode == mode.standby:
-        rate = self.standby_rate
-        
-      time.sleep(0.9 / rate - time.time() + t1)
-      while(time.time() < t1 + 1 / rate):
-        time.sleep(0.01)
-        
-    print(self.parent.name,":",count) #debug counting
-    print(time.time()-t2)
-    
-    
+
 def broadcast(data):
   pass
-    
+  
 def activate():
-  abort_reason = None
-  for member in sampling_control.members:
-    if member.flight_ready == False:
-      abort_reason = member
-      break
-  
-  if abort_reason != None:
-    print('Activation aborted because {} is not flight ready.'.format(
-    abort_reason.name))
-    return
-  
-  sampling_control.is_active = True
-  for member in sampling_control.members:
-    thread.start_new_thread(member.sampling.loop,())
-    
+  pass
 
 def deactivate():
-  sampling_control.is_active = False
-        
+  pass
+  
 # List vector component indices
 x = 0
 y = 1
@@ -151,3 +92,4 @@ def absolute_angles(vector):
   
 start_epoch()
 
+m = measurement_scheduler.measurement_scheduler(10)

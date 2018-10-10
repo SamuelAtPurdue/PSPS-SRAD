@@ -1,4 +1,5 @@
 import FGU
+import measurement_scheduler
 import board
 import busio
 import adafruit_lsm9ds1
@@ -42,7 +43,10 @@ def _get(self, new = 0):
 setattr(adafruit_lsm9ds1.LSM9DS1_I2C, 'get', _get)
 
 def _setup(self, flight_rate, standby_rate = None):
-  self.sampling = FGU.sampling(self, flight_rate, standby_rate)
+  if standby_rate == None:
+    standby_rate = flight_rate
+  self.rate = [flight_rate, standby_rate]
+  
   imu.flight_ready = True
   print('imu is flight ready with flight rate of {} Hz and a standby rate of {} Hz.'.format(
   self.sampling.flight_rate, self.sampling.standby_rate))
