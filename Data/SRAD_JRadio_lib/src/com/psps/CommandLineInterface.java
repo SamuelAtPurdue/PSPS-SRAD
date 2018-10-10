@@ -87,7 +87,6 @@ public class CommandLineInterface {
             jsonformat.pack(flightform.getFormattedDataStructure());
             String dat = jsonformat.getFormattedData();
             System.out.println(dat);
-            jsonformat.pack(new StatusData(0,true));
             String dat2 = jsonformat.getFormattedData();
             // System.out.println(dat2);
         }catch (InvalidDataTypeException in){}

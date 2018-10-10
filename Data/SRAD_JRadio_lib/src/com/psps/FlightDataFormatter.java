@@ -21,8 +21,8 @@ public class FlightDataFormatter implements Formatter{
             throw new InvalidDataTypeException("flight data not formatted as 32b float");
     }
     private FlightData parseFloatToFlightData(float data, int index) throws InvalidDataTypeException{
-        DataType dataFromTable = DataSequenceLookup.lookupFlightDataType(index);
-        return new FlightData(dataFromTable.getTypeName(), data, dataFromTable.getUnits());
+        String dataFromTable = DataSequenceLookup.lookupFlightDataType(index);
+        return new FlightData(dataFromTable, data);
     }
 
     @Override
