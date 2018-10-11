@@ -3,10 +3,7 @@ import datetime
 import json
 import math
 import _thread as thread
-
-import RPi.GPIO as GPIO
-GPIO.setmode(GPIO.BCM)
-
+import measurement_scheduler
 # Data Packet Types
 class packet_type():
   LSM9DS1 = 'lsm9ds1'
@@ -18,9 +15,6 @@ class mode():
   flight = 1
 # 
 
-
-class instrumentation_controller():
-  def __init__(self, pin)
 
 
 def broadcast(data):
@@ -98,3 +92,4 @@ def absolute_angles(vector):
   
 start_epoch()
 
+m = measurement_scheduler.measurement_scheduler(10)

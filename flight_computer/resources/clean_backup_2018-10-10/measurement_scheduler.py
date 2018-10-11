@@ -13,7 +13,7 @@ class measurement_scheduler():
     self.do_loop = False
     self.members = []
     self.mode = mode.flight
-    self.do_broadcast_data = True
+    self.do_broadcast_data = False
     self.do_save_data = False
     
   def loop(self):
@@ -48,7 +48,7 @@ class measurement_scheduler():
     print(self.counter)
   
   def add_member(self, member):
-    self.members.append(member)
+    self.members.append()
   
   def broadcast_data(self, data):
     print(data)
