@@ -1,6 +1,5 @@
 import FGU
 import time
-from measurement_scheduler import measurement_scheduler as ms
 
 from lsm9ds1 import *
 from bmp280 import *
