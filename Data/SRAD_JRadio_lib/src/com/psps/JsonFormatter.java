@@ -17,9 +17,11 @@ class JsonFormatter implements Formatter {
      */
     @Override
     public void pack(Object... dataIn) throws InvalidDataTypeException{
-        for (GenericData data : (GenericData[]) dataIn){
-            json.addValue(data.getType(),data.getValue());
-        }
+        if (dataIn instanceof GenericData[])
+            for (GenericData data : (GenericData[]) dataIn)
+                json.addValue(data.getType(),data.getValue());
+        else
+            throw new InvalidDataTypeException("could not parse to json: data not an instance of GenericData");
     }
 
     /**

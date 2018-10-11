@@ -29,13 +29,4 @@ public interface Formatter {
      * @return formatted data structure array
      */
     Object[] getFormattedDataStructure();
-
-    /**
-     * Simply dumps data to command line for Debugging
-     * requires override of toString() for specific implementation
-     * @param dumpData data to be dumped to CLI
-     */
-    static void dump(Formatter dumpData){
-        System.out.println(dumpData);
-    }
 }
