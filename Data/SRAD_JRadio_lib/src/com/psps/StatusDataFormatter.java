@@ -29,11 +29,6 @@ class StatusDataFormatter implements Formatter {
     }
 
     @Override
-    public Object[] unpack() {
-        return new Object[0];       //TODO implement
-    }
-
-    @Override
     public Object[] getFormattedDataStructure() {
         StatusData[] out = new StatusData[formattedDataStructure.size()];
         return formattedDataStructure.toArray(out);

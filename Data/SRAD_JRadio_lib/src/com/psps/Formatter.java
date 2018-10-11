@@ -15,12 +15,6 @@ public interface Formatter {
     void pack(Object... dataIn) throws InvalidDataTypeException;
 
     /**
-     * Unpacks the object to unformatted data
-     * @return unformatted data from the data structure stored in the class.
-     */
-    Object[] unpack();
-
-    /**
      * gets the formatted data structure.
      * @return formatted data structure dependant on instance of the class.
      */
@@ -35,13 +29,4 @@ public interface Formatter {
      * @return formatted data structure array
      */
     Object[] getFormattedDataStructure();
-
-    /**
-     * Simply dumps data to command line for Debugging
-     * requires override of toString() for specific implementation
-     * @param dumpData data to be dumped to CLI
-     */
-    static void dump(Formatter dumpData){
-        System.out.println(dumpData);
-    }
 }
