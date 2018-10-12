@@ -19,9 +19,6 @@ class mode():
 # 
 
 
-class instrumentation_controller():
-  def __init__(self, pin)
-
 
 def broadcast(data):
   pass
