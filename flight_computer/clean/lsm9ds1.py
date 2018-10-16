@@ -41,11 +41,19 @@ def _get(self, new = 0):
   
 setattr(adafruit_lsm9ds1.LSM9DS1_I2C, 'get', _get)
 
+def _get_rate(self):
+  if FGU.mode.mode = FGU.mode.flight:
+    return self.flight_rate
+  if FGU.mode.mode = FGU.mode.standby:
+    return self.standby_rate
+
+setattr(adafruit_lsm9ds1.LSM9DS1_I2C, 'get_rate', _get_rate)    
+    
 def _setup(self, flight_rate, standby_rate = None):
   if standby_rate == None:
     standby_rate = flight_rate
   self.rate = [flight_rate, standby_rate]
-  
+  FGU.timer_control.add_member(self)
   imu.flight_ready = True
  # print('imu is flight ready with flight rate of {} Hz and a standby rate of {} Hz.'.format(
  #  self.sampling.flight_rate, self.sampling.standby_rate))

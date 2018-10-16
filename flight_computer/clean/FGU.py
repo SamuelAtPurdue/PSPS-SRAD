@@ -16,18 +16,62 @@ class packet_type():
 class mode():
   standby = 0
   flight = 1
+  
+  mode = 0
+  do_broadcast = False
+  do_save = True
+  
+def get_mode():
+  return mode.mode
 # 
 
+class timer_control():
+  tick_counter = 0
+  members = []
+  
+  def add_member(member):
+    timer_control.members.append(member)
 
-
+  def tick():
+    for member in timer_control.members:
+      if timer_control.tick_counter % member.get_rate() == 0:
+        data = member.get(new = 1)
+        if mode.do_broadcast:
+          broadcast(data)
+        if mode.do_save:
+          save(data)
+    
+    
+    
 def broadcast(data):
   pass
+def save(data):
+  pass
   
-def activate():
-  pass
 
+_activate_target = None  
+def activate():
+  if _activate_target == None:
+    print('Error: Activation target not set')
+    return
+  else:
+    _activate_target()
+
+_deactivate_target = None
 def deactivate():
-  pass
+  if _deactivate_target == None:
+    print('Error: Deactivation target not set')
+    return
+  else:
+    _deactivate_target()
+
+def import_timer(timer):
+  _activate_target = timer.activate
+  _deactivate_target = timer.deactivate
+
+def import_timer_fcts(activate_fct, deactivate_fct):
+  _activate_target = activate_fct
+  _deactivate_target = deactivate_fct
   
 # List vector component indices
 x = 0

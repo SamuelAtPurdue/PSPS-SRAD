@@ -34,7 +34,7 @@ def irpt_loop():
   return
 
 
-def start():
+def activate():
   if setup_check() == False:
     return
   
@@ -45,7 +45,7 @@ def start():
   time.sleep(0.1)
   GPIO.output(_output_pin, GPIO.HIGH)
 
-def stop():
+def deactivate():
   if setup_check() == False:
     return
   
@@ -60,12 +60,17 @@ def test(t):
   
   global counter
   counter = 0
-  start()
+  activate()
   time.sleep(t)
-  stop()
+  deactivate()
   print(counter)
 
-def setup(output_pin, input_pin, target_fct = default_target_fct)
-  GPIO.setup(24, GPIO.OUT)
-  GPIO.output(24, GPIO.LOW)
-  GPIO.setup(23, GPIO.IN)
+def setup(output_pin, input_pin, target_fct = default_target_fct):
+  global _output_pin, _input_pin
+  _output_pin = output_pin
+  _input_pin = input_pin
+  GPIO.setup(output_pin, GPIO.OUT)
+  GPIO.output(output_pin, GPIO.LOW)
+  GPIO.setup(input_pin, GPIO.IN)
+  
+  FGU.import_timer_fcts(activate, deactivate)
