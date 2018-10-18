@@ -78,7 +78,15 @@ This project is organized into 7 main team roles:
     <h4> Data Transmission and Interpretation</h4>
     <p> 
       Description: The Data Transmission and Interpretation role is tasked with developing and maintaining a effective way to collect, store, and use data received from the rocket.<br>
-      Timeline: TBD<br>
+      Timeline: 
+        <ul>
+          <li>Requirements 1st Draft: 10/19/18</li>
+          <li>Abstract Project Outline: 10/31/18</li>
+          <li>Detailed Project Outline: 11/30/18</li>
+          <li>Small Scale Test: 12/15/18</li>
+          <li>v1 Full Scale Test: 12/31/18</li>
+        </ul>
+      <br>
       Project Lead: Samuel Hild<br>
     </p>
   </li>
