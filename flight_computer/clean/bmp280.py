@@ -27,10 +27,10 @@ def _get(self, new = 0):
 setattr(adafruit_bmp280.Adafruit_BMP280_I2C, 'get', _get)
 
 def _get_rate(self):
-  if FGU.mode.mode = FGU.mode.flight:
-    return self.flight_rate
-  if FGU.mode.mode = FGU.mode.standby:
-    return self.standby_rate
+  if FGU.mode.mode == FGU.mode.flight:
+    return self.rate[0]
+  if FGU.mode.mode == FGU.mode.standby:
+    return self.rate[1]
 
 setattr(adafruit_bmp280.Adafruit_BMP280_I2C, 'get_rate', _get_rate)
 

@@ -1,6 +1,6 @@
 import time
 import _thread as thread
-
+import FGU
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
 
@@ -10,10 +10,10 @@ is_setup = False
 _output_pin = 0
 _input_pin = 0
 
-_target_fct = default_target_fct
-
 def default_target_fct():
   print("'default_target_fct' output")
+
+_target_fct = default_target_fct
 
 def setup_check():
   if is_setup == False:
@@ -29,6 +29,7 @@ def irpt_loop():
   global counter
   while do_loop:
     GPIO.wait_for_edge(_input_pin, GPIO.RISING)
+    _target_fct()
     counter += 1
     time.sleep(0.01)
   return
@@ -65,12 +66,14 @@ def test(t):
   deactivate()
   print(counter)
 
-def setup(output_pin, input_pin, target_fct = default_target_fct):
-  global _output_pin, _input_pin
+def setup(output_pin, input_pin):
+  global _output_pin, _input_pin, _target_fct, is_setup
   _output_pin = output_pin
   _input_pin = input_pin
   GPIO.setup(output_pin, GPIO.OUT)
   GPIO.output(output_pin, GPIO.LOW)
   GPIO.setup(input_pin, GPIO.IN)
-  
+  _target_fct = FGU.timer_control.tick
   FGU.import_timer_fcts(activate, deactivate)
+  is_setup = True
+###  print('hi')

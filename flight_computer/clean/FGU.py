@@ -14,8 +14,8 @@ class packet_type():
   UGPS    = 'ugps'
 
 class mode():
-  standby = 0
-  flight = 1
+  standby = 1
+  flight = 0
   
   mode = 0
   do_broadcast = False
@@ -40,13 +40,16 @@ class timer_control():
           broadcast(data)
         if mode.do_save:
           save(data)
+    timer_control.tick_counter += 1
+    print('tick')
     
     
     
 def broadcast(data):
   pass
 def save(data):
-  pass
+  print('save')
+  print(data)
   
 
 _activate_target = None  
@@ -66,12 +69,15 @@ def deactivate():
     _deactivate_target()
 
 def import_timer(timer):
+  global _activate_target, _deactivate_target
   _activate_target = timer.activate
   _deactivate_target = timer.deactivate
 
 def import_timer_fcts(activate_fct, deactivate_fct):
+  global _activate_target, _deactivate_target
   _activate_target = activate_fct
   _deactivate_target = deactivate_fct
+
   
 # List vector component indices
 x = 0

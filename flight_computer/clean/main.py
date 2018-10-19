@@ -19,3 +19,5 @@ def test(t):
   FGU.activate()
   time.sleep(t)
   FGU.deactivate()
+
+#test(4)
