@@ -99,7 +99,7 @@ This project is organized into 7 main team roles:
     </p>
   </li>
   <li> 
-    <h4> Flight Data Collection</h4>
+    <h4> Flight Computer Software</h4>
     <p>
       Description: Flight Computer Software is tasked with collection of flight and status data from the flight computer.<br>
       Timeline: TBD<br>
@@ -115,7 +115,7 @@ This project is organized into 7 main team roles:
     </p>
   </li>
   <li> 
-    <h4> Flight sled Hardware</h4>
+    <h4> Flight Sled Hardware</h4>
     <p> 
       Description: Flight Sled Hardware is tasked with creating a 3d model of a flight sled to be flown and choosing the correct materials to withstand the flight.<br>
       Timeline: TBD<br>
