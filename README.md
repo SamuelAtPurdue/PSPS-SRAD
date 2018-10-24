@@ -19,14 +19,14 @@ Our Mission is to create a student researched and designed avionics sled capable
 <p>
 The Primary Mission Requirements are as follows:
 <ul>
-  <li> Redundant Systems for critical flight measurements and communication</li>
-  <li> A custom build PCB sled capable of handling the G forces of flight</li>
-  <li> A User Interface which can interpret data and send information and commands to the rocket</li>
   <li> A method to interpret the critical data in flight in order to trigger charges for chute deployment and recovery</li>
-  <li> A reliable communication protocol for sending raw flight data back to the computer on the ground</li>
-  <li> Full communication and control from outside the rocket</li>
-  <li> Easy access for charging
+  <li> Redundant Systems for critical flight measurements and communication</li>
   <li> Adaptability, robust code, and easy to interpret documentation</li>
+  <li> A User Interface which can interpret data and send information and commands to the rocket</li>
+  <li> A reliable communication protocol for sending raw flight data back to the computer on the ground</li>
+  <li> Easy access for charging</li>
+  <li> Full communication and control from outside the rocket</li>  
+  <li> A custom build PCB sled capable of handling the G forces of flight</li>
 </ul>
 </p>
 <br>
@@ -101,7 +101,7 @@ This project is organized into 7 main team roles:
   <li> 
     <h4> Flight Data Collection</h4>
     <p>
-      Description: Flight Data Collection is tasked with collection of flight and status data from the flight computer.<br>
+      Description: Flight Computer Software is tasked with collection of flight and status data from the flight computer.<br>
       Timeline: TBD<br>
       Project Lead: Jeff Kaji<br>
     </p>
