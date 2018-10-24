@@ -65,6 +65,8 @@ The following are not mission critical but are goals but are planned for the fut
 <p>
   <ul>
     <li><b>json-simple:</b> https://github.com/fangyidong/json-simple</li>
+    <li><b>junit: </b> https://junit.org/junit4/</li>
+    <li><b>xbee java libraries: </b> https://www.digi.com/resources/documentation/digidocs/90001438/</li>
   </ul>
 </p>
 <br>
