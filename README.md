@@ -57,7 +57,19 @@ The following are not mission critical but are goals but are planned for the fut
 <h3>Components</h3>
 <hr>
 <p>
-  TBD
+  <b>System 1</b>
+  <ul>
+    <li>Radio: XBee Pro 900</li>
+    <li>Processor: Raspberry Pi Zero W</li>
+    <li>Timer: Attiny 85</li>
+    <li>Altimeter: Bmp280</li>
+    <li>Real Time Clock: DS3231</li>
+    <li>Accelerometer: Lsm9DS1</li>
+    <li>GPS: Ultimate GPS</li>
+  </ul>
+  <b>System 2</b>
+  <li>Radio: XBee Pro 900 (shared with system 1)</li>
+  <li>Processor: Raspberry Pi Zero W</li>
 </p>
 <br>
 <h3>Code Dependencies</h3>
