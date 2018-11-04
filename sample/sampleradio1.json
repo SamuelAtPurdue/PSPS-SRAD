@@ -1,0 +1,65 @@
+/*
+Below is a sample json file, this is the general idea of what will be transmitted and how it will be formatted
+This is subject to change.
+*/
+
+{
+  "flight-data" : [
+    {"altitude" : 9144.0},
+    {"pressure" : 24.5},
+    {"acceleration" : -0.0203},
+    {"latitude" : 40.4237},
+    {"longitude" : 86.9212},
+    {"power" : 0.53},
+    {"battery_voltage_1" : 3.4},
+    {"battery_voltage_2" : 3.2},
+    {"battery_voltage_3" : 3.5},
+    {"battery_voltage_4" : 3.2},
+    {"battery_voltage_5" : 3.2},
+    {"battery_voltage_6" : 3.5},
+    {"battery_voltage_7" : 3.1},
+    {"current_draw_1" : 0.120},
+    {"current_draw_2" : 0.010},
+    {"current_draw_3" : 0.043},
+    {"current_draw_4" : 0.012},
+    {"current_draw_5" : 0.023},
+    {"current_draw_6" : 0.013},
+    {"current_draw_7" : 0.072},
+    {"pitch" : 14.1},
+    {"yaw" : 0.2},
+    {"roll" : 347.4},
+    {"roll_rate" : 0.002},
+    {"magnetic_heading" : 23},
+    {"velocity" : 340.1},
+    {"roc" : 332.1},
+    {"temperature" : 21.3},
+    {"charge_drogue_1" : true},
+    {"charge_drogue_2" : true},
+    {"charge_main_1" : true},
+    {"charge_main_2" : true},
+    {"charge_payload_1" : true},
+    {"charge_payload_2" : true},
+    {"charge_nosecone_1" : true},
+    {"charge_nosecone_2" : true},
+    {"flight_timestamp" : 5.213}
+  ],
+  "status" : [
+    {"raspberry_pi_zero_w" : true},
+    {"attiny85" : true},
+    {"ultimate_gps_module" : true},
+    {"lsm9ds1" : true},
+    {"bmp280" : true},
+    {"ds3231" : true},
+    {"xbee pro" : true},
+    //--insert flight hardware 2--
+    {"charge_drogue_1" : true},
+    {"charge_drogue_2" : true},
+    {"charge_main_1" : true},
+    {"charge_main_2" : true},
+    {"charge_payload_1" : true},
+    {"charge_payload_2" : true},
+    {"charge_nosecone_1" : true},
+    {"charge_nosecone_2" : true},
+    {"flight_timestamp" : 5.373}
+  ]
+}

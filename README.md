@@ -19,14 +19,14 @@ Our Mission is to create a student researched and designed avionics sled capable
 <p>
 The Primary Mission Requirements are as follows:
 <ul>
-  <li> Redundant Systems for critical flight measurements and communication</li>
-  <li> A custom build PCB sled capable of handling the G forces of flight</li>
-  <li> A User Interface which can interpret data and send information and commands to the rocket</li>
   <li> A method to interpret the critical data in flight in order to trigger charges for chute deployment and recovery</li>
-  <li> A reliable communication protocol for sending raw flight data back to the computer on the ground</li>
-  <li> Full communication and control from outside the rocket</li>
-  <li> Easy access for charging
+  <li> Redundant Systems for critical flight measurements and communication</li>
   <li> Adaptability, robust code, and easy to interpret documentation</li>
+  <li> A User Interface which can interpret data and send information and commands to the rocket</li>
+  <li> A reliable communication protocol for sending raw flight data back to the computer on the ground</li>
+  <li> Easy access for charging</li>
+  <li> Full communication and control from outside the rocket</li>  
+  <li> A custom build PCB sled capable of handling the G forces of flight</li>
 </ul>
 </p>
 <br>
@@ -57,7 +57,19 @@ The following are not mission critical but are goals but are planned for the fut
 <h3>Components</h3>
 <hr>
 <p>
-  TBD
+  <b>System 1</b>
+  <ul>
+    <li>Radio: XBee Pro 900</li>
+    <li>Processor: Raspberry Pi Zero W</li>
+    <li>Timer: Attiny 85</li>
+    <li>Altimeter: Bmp280</li>
+    <li>Real Time Clock: DS3231</li>
+    <li>Accelerometer: Lsm9DS1</li>
+    <li>GPS: Ultimate GPS</li>
+  </ul>
+  <b>System 2</b>
+  <li>Radio: XBee Pro 900 (shared with system 1)</li>
+  <li>Processor: Raspberry Pi Zero W</li>
 </p>
 <br>
 <h3>Code Dependencies</h3>
@@ -65,6 +77,8 @@ The following are not mission critical but are goals but are planned for the fut
 <p>
   <ul>
     <li><b>json-simple:</b> https://github.com/fangyidong/json-simple</li>
+    <li><b>junit: </b> https://junit.org/junit4/</li>
+    <li><b>xbee java libraries: </b> https://www.digi.com/resources/documentation/digidocs/90001438/</li>
   </ul>
 </p>
 <br>
@@ -78,7 +92,15 @@ This project is organized into 7 main team roles:
     <h4> Data Transmission and Interpretation</h4>
     <p> 
       Description: The Data Transmission and Interpretation role is tasked with developing and maintaining a effective way to collect, store, and use data received from the rocket.<br>
-      Timeline: TBD<br>
+      Timeline: 
+        <ul>
+          <li>Requirements 1st Draft: 10/19/18 - Completed 10/18/2018</li>
+          <li>Abstract Project Outline: 10/31/18 - Completed 10/25/2018</li>
+          <li>Detailed Project Outline: 11/30/18</li>
+          <li>Small Scale Test: 12/15/18</li>
+          <li>v1 Full Scale Test: 12/31/18</li>
+        </ul>
+      <br>
       Project Lead: Samuel Hild<br>
     </p>
   </li>
@@ -91,9 +113,9 @@ This project is organized into 7 main team roles:
     </p>
   </li>
   <li> 
-    <h4> Flight Data Collection</h4>
+    <h4> Flight Computer Software</h4>
     <p>
-      Description: Flight Data Collection is tasked with collection of flight and status data from the flight computer.<br>
+      Description: Flight Computer Software is tasked with collection of flight and status data from the flight computer.<br>
       Timeline: TBD<br>
       Project Lead: Jeff Kaji<br>
     </p>
@@ -107,7 +129,7 @@ This project is organized into 7 main team roles:
     </p>
   </li>
   <li> 
-    <h4> Flight sled Hardware</h4>
+    <h4> Flight Sled Hardware</h4>
     <p> 
       Description: Flight Sled Hardware is tasked with creating a 3d model of a flight sled to be flown and choosing the correct materials to withstand the flight.<br>
       Timeline: TBD<br>

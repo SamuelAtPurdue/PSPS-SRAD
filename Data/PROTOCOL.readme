@@ -1,0 +1,92 @@
+PSPS SRAD Radio Protocol
+Overview Documentation
+Created: 10-18-2018
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+Document Organization:
+- Description
+- Definitions
+- Criteria
+- Constraints
+- Timeline
+- Data List
+- Implementation
+- Other
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+Description: PSPS SRAD Data Transmission requires a lightweight radio protocol for transmitting flight, status, command, and error data between the rocket and the ground station. This system must be lightweight and robust and contain all relevant data and error checking in order to ensure proper communication. All data will be verified in order to ensure transmission integrity over the distances specified by the PSPS mission requirements. This system will be primarily used by the Ground Station Data Packager, the Ground Station Radio, Flight Computer Radio, and Python Data Packager. The Java Data Packager and Python Data Packager are responsible for organising the data into the format required for transmission. Below are more specifics on requirements and implementation. For Technical Details skip to implementation.
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+Definitions: 
+- Light Weight: The Protocol should minimize the size of the data transmitted to only what is necessary for mission success and data analytics on the ground. Put another way: Less is More.
+- Flight Data: Flight Data consists of data relevant to the trajectory and flight of the rocket. A full list of the flight data is in the Data List section.
+- Status Data: Status Data consists of the status of each individual component on the rocket. This data is not listed but can can be assumed that there is data transmitted per component displaying whether the component is operational. See Flight Hardware.
+- Command Data: Command Data consists of commands sent to the rocket and necessary arguments. See Java CLI.
+- Error Data: Error Data consists of all data need for error checking and correction for the flight computer. An important distinction is made between this error data and the packet by packet error checking. See Below for Packet Error checking.
+- Robust: Robust need not be defined.
+- Data Integrity: all data must be complete and correct. See Implementation for details on error checking and integrity.
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+Criteria:
+- Must be capable of transmitting all four types of data.
+- Must be expandable to accommodate new data types as the flight system evolves.
+- Must be easy to implement and across both Java and Python.
+- Implementation must be the same on both the ground station and the flight computer.
+- Must check for errors and verify data integrity.
+- Must be Capable of transmitting over 30,000ft
+- Must be able to handle long periods of time (.5-1 min) of lost packets.
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+Constraints:
+
+- Must be implemented on a ground station and the flight computer.
+- limited to a baud rate of 9600 (See Radio Hardware).
+- must be lightweight (See Definitions).
+- must minimise packet size.
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+Timeline:
+
+- Requirements 1st Draft: 10/19/18 - Completed 10/18/18
+- Abstract Project Outline: 10/31/18
+- Detailed Project Outline: 11/30/18
+- Small Scale Test: 12/15/18
+- v1 Full Scale Test: 12/31/18
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+Data List:
+
+- Altitude (m)
+- Pressure (kPa)
+- Acceleration (m/s^2)
+- Longitude (deg)
+- Latitude (deg)
+- Power Remaining (%) - Per Battery
+- Voltage (v) - Per Battery
+- Current Draw (Amp) - Per Battery
+- Pitch Attitude (deg)
+- Yaw Attitude (deg)
+- Roll Attitude (deg)
+- Roll Rate (deg/s)
+- Magnetic Heading (standard)
+- Velocity (m/s)
+- Rate of Climb (m/s)
+- Internal Temperature (C)
+- Charge Continuity
+
+Status Data is on a per component basis and can be determined based on the hardware list. Because of the importance of Charge Continuity it is transmitted with both Status and Flight Data.
+
+Command Data format can be seen in Java CLI documentation.
+
+Error Data format can be seen below in Implementation and in Flight Computer Software.
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+Implementation: DEADLINE 11/30/18
