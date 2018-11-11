@@ -4,6 +4,15 @@ from Events import Event_Handler
 import External_Timing as ET
 import Data_Manager as DM
 
+### Add check in feature for each part
+### Once the library is imported, the part
+### is checked in. Then FGU method flight_ready()
+### Can be called, checking in all of the parts.
+### Strings with details will be stored too.
+### Ex. "LSM9DS1 is flight ready."
+### Ex. "BMP280 is not flight ready (SENSOR NOT FOUND)"
+### Ex. "Ultimate GPS is not flight ready. (NO FIX)"
+### Also build in not found exception handling.
 
 class MODE():
   STANDBY = 'standby'
@@ -59,6 +68,8 @@ class Sensor_I2C(ABC):
     self._is_setup = True
   
 
+t0 = 0
+t0_datetime = ''  
 # Starts Epoch
 def start_epoch():
   global t0, t0_datetime
@@ -69,5 +80,9 @@ def start_epoch():
 # Get current timestamp relative to the epoch
 def get_timestamp():
 	return time.time() - t0
+def get_epoch():
+  return t0
+def get_epoch_string():
+  return t0_datetime
   
 start_epoch()
