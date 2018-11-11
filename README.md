@@ -96,7 +96,7 @@ This project is organized into 7 main team roles:
         <ul>
           <li>Requirements 1st Draft: 10/19/18 - Completed 10/18/2018</li>
           <li>Abstract Project Outline: 10/31/18 - Completed 10/25/2018</li>
-          <li>Detailed Project Outline: 11/30/18</li>
+          <li>Detailed Project Outline: 11/30/18 - Completed 11/11/2018</li>
           <li>Small Scale Test: 12/15/18</li>
           <li>v1 Full Scale Test: 12/31/18</li>
         </ul>
