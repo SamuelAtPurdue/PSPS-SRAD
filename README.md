@@ -22,7 +22,7 @@ The Primary Mission Requirements are as follows:
   <li> A method to interpret the critical data in flight in order to trigger charges for chute deployment and recovery</li>
   <li> Redundant Systems for critical flight measurements and communication</li>
   <li> Adaptability, robust code, and easy to interpret documentation</li>
-  <li> A User Interface which can interpret data and send information and commands to the rocket</li>
+  <li> A User Interface which can interpret data from the rocket</li>
   <li> A reliable communication protocol for sending raw flight data back to the computer on the ground</li>
   <li> Easy access for charging</li>
   <li> Full communication and control from outside the rocket</li>  
@@ -35,6 +35,7 @@ The Primary Mission Requirements are as follows:
 <p>
 The following are not mission critical but are goals but are planned for the future:
 <ul>
+  <li> Ability to send configuration information to the rocket</li>
   <li> Easy to interpret graphical representation of flight data</li>
   <li> Prediction of flight based on weather conditions</li>
   <li> Electronic Buzzer for easier recovery</li>
@@ -48,7 +49,7 @@ The following are not mission critical but are goals but are planned for the fut
 <p>
   The constraints are as follows:
   <ul>
-    <li> Cost: TBD</li>
+    <li> Cost: See Budget</li>
     <li> Flyability: Must fit in a 6 inch radius fuselage</li>
     <li> Length and weight should be minimized</li>
   </ul>
@@ -68,8 +69,13 @@ The following are not mission critical but are goals but are planned for the fut
     <li>GPS: Ultimate GPS</li>
   </ul>
   <b>System 2</b>
-  <li>Radio: XBee Pro 900 (shared with system 1)</li>
-  <li>Processor: Raspberry Pi Zero W</li>
+  <ul>
+    <li>Radio: XBee Pro 900 (shared with system 1)</li>
+    <li>Processor: Raspberry Pi Zero W</li>
+    <li>Altimeter: TBD</li>
+    <li>Accelerometer: TBD</li>
+    <li>GPS: TBD</li>
+  </ul>
 </p>
 <br>
 <h3>Code Dependencies</h3>
@@ -79,6 +85,7 @@ The following are not mission critical but are goals but are planned for the fut
     <li><b>json-simple:</b> https://github.com/fangyidong/json-simple</li>
     <li><b>junit: </b> https://junit.org/junit4/</li>
     <li><b>xbee java libraries: </b> https://www.digi.com/resources/documentation/digidocs/90001438/</li>
+    <li><b>jSerialComm: </b> https://github.com/Fazecast/jSerialComm</li>
   </ul>
 </p>
 <br>
@@ -97,7 +104,7 @@ This project is organized into 7 main team roles:
           <li>Requirements 1st Draft: 10/19/18 - Completed 10/18/2018</li>
           <li>Abstract Project Outline: 10/31/18 - Completed 10/25/2018</li>
           <li>Detailed Project Outline: 11/30/18 - Completed 11/11/2018</li>
-          <li>Small Scale Test: 12/15/18</li>
+          <li>Small Scale Test: 12/15/18 - In Progress</li>
           <li>v1 Full Scale Test: 12/31/18</li>
         </ul>
       <br>
@@ -105,7 +112,7 @@ This project is organized into 7 main team roles:
     </p>
   </li>
   <li> 
-    <h4> Flight computer hardware</h4>
+    <h4> Flight computer System 1 hardware</h4>
     <p> 
       Description: Flight Computer Hardware is tasked with construction of the electronic components of the flight computer including sensors, tracking, and main processor. <br>
       Timeline: TBD<br>
@@ -113,7 +120,7 @@ This project is organized into 7 main team roles:
     </p>
   </li>
   <li> 
-    <h4> Flight Computer Software</h4>
+    <h4> Flight Computer System 1 Software</h4>
     <p>
       Description: Flight Computer Software is tasked with collection of flight and status data from the flight computer.<br>
       Timeline: TBD<br>
@@ -124,7 +131,7 @@ This project is organized into 7 main team roles:
     <h4> Radio Hardware and Operation</h4>
     <p> 
       Description: Radio Hardware and Operations is tasked with building and operating a radio capable of receiving transmissions from the rocket throughout the duration of flight while operating within the legal regulations.<br>
-      Timeline: TBD<br>
+      Timeline: Waiting on Radio<br>
       Project Lead: Arpit Amin
     </p>
   </li>
