@@ -10,6 +10,8 @@ FGU.mode = FGU.MODE.STANDBY
 DM.set_save_fct(DM.do_nothing)
 DM.set_broadcast_fct(DM.do_nothing)
 
+
+
 FGU.activate()
 time.sleep(10)
 FGU.deactivate()

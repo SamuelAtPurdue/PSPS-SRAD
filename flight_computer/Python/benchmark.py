@@ -17,7 +17,7 @@ def is_setup():
 def setup(output_pin, input_pin):
   global _output_pin, _input_pin, _is_setup
   _output_pin = output_pin
-  _input_pin = input_pin
+  _input_pin = input_pin\
   _is_setup = True
   
 def _timer_loop():

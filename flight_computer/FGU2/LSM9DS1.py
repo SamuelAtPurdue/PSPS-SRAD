@@ -1,7 +1,7 @@
 import FGU, FGU_math, board, busio, adafruit_lsm9ds1, time
 from objdict import ObjDict
 
-class LSM9DS1_Sensor(FGU.Sensor_I2C):
+class LSM9DS1_Sensor(FGU.Sensor):
   def update(self):
     self.data = ObjDict()
     self.data.timestamp = FGU.get_timestamp()
@@ -13,9 +13,13 @@ class LSM9DS1_Sensor(FGU.Sensor_I2C):
     self.data.temperature = self._sensor.temperature
     return self.data
   
-  def get(self):
-    return self.data
+  def flight_readiness_check(self):
+    return_string = '         LSM9DS1 is ready for launch.'
+    if not self._is_setup:
+      return_string = 'CAUTION: LSM9DS1 is NOT ready for launch. (NOT SETUP)'
+    return self._is_setup, return_string
 
+  
 
 i2c = busio.I2C(board.SCL, board.SDA)
 lsm9ds1_i2c_object = adafruit_lsm9ds1.LSM9DS1_I2C(i2c)
