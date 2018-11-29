@@ -1,7 +1,7 @@
 package com.psps;
 
-class RadioIOException extends Exception {
-    RadioIOException(String message){
+public class RadioIOException extends Exception {
+    public RadioIOException(String message){
         super(message);
     }
 }
