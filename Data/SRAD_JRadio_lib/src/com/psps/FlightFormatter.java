@@ -17,7 +17,7 @@ public class FlightFormatter implements Formatter {
     }
 
     @Override
-    public Object getValue(String key) {
+    public String getStringValue(String key) {
         return null;
     }
 

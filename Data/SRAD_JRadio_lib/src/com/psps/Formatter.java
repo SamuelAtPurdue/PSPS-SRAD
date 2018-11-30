@@ -9,36 +9,42 @@ package com.psps;
 public interface Formatter {
 
     /**
+     * unpack():
      * Unpacks the raw data to the Formatter Object.
      * @param rawData unformatted data to unpack
      */
     void unpack(char []rawData);
 
-    /** (FUTURE VERSION)
+    /**
+     * pack():(FUTURE VERSION)
      * Packs the data to the formatter (kept for future versions, implement empty)
      * @param formattedData Formatted JSON data as a String
      */
     void pack(String formattedData);
 
     /**
+     * clear():
      * Clears all data from the formatter
      */
     void clear();
 
     /**
+     * getStringValue():
      * gets a value by the key String
      * @param key String to decide which value to return
      * @return value returned by a particular key
      */
-    Object getValue(String key);
+    String getStringValue(String key);
 
     /**
+     * getFormattedData:
      * get the formatted data
      * @return data formatted as a String
      */
     String getFormattedData();
 
-    /** (FUTURE VERSION)
+    /**
+     * getUnformattedData():(FUTURE VERSION)
      * get the unformatted data
      * @return unformatted data as a char array
      */
