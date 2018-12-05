@@ -40,7 +40,7 @@ public final class SerialIO implements RadioIO {
     }
 
     @Override
-    public char[] read() {
+    public String readLine() {
         StringBuffer buffer = new StringBuffer();
         try {
             waitForNext();
@@ -55,7 +55,12 @@ public final class SerialIO implements RadioIO {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return buffer.toString().toCharArray();
+        return buffer.toString();
+    }
+
+    @Override
+    public char read(){
+        return 0x00;
     }
 
     private void waitForNext() throws Exception {
@@ -68,7 +73,7 @@ public final class SerialIO implements RadioIO {
     }
 
     @Override
-    public void write(char[] writedata) {
+    public void write(String writedata) {
         System.err.println("[??] warning: method com.psps.SerialIO.write() not yet implemented.");
         System.err.println("[??] method reserved for future versions and does not yet have functionality.");
     }

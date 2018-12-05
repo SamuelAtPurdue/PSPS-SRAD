@@ -22,11 +22,17 @@ public interface RadioIO {
      * Reads data from the source of data as raw data formatted as a char array
      * @return raw data from the data source that will need to be formatted
      */
-    char[] read();
+    char read();
+
+    /**
+     * Reads data from the source of data as raw data formatted as a String until a newline char is encountered
+     * @return raw data from the data source that will need to be formatted
+     */
+    String readLine();
 
     /** (FUTURE VERSION)
      * Writes data to the radio. (Required for future versions)
      * @param rawData raw, unformatted data to write to the radio.
      */
-    void write(char[] rawData);
+    void write(String rawData);
 }
