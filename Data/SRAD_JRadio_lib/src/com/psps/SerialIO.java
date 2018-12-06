@@ -41,8 +41,8 @@ public final class SerialIO implements RadioIO {
 
     @Override
     public String readLine() {
-        StringBuffer buffer = new StringBuffer();
         try {
+            StringBuffer buffer = new StringBuffer();
             waitForNext();
 
             int charBuffer;
@@ -52,15 +52,24 @@ public final class SerialIO implements RadioIO {
                 buffer.append((char) charBuffer);
             }while (charBuffer != END_CHAR);
 
+
+            return buffer.toString();
         } catch (Exception e) {
             e.printStackTrace();
+            return null;
         }
-        return buffer.toString();
     }
 
     @Override
     public char read(){
-        return 0x00;
+        try {
+            waitForNext();
+
+            return (char) ioStream.read();
+        }catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
     }
 
     private void waitForNext() throws Exception {
