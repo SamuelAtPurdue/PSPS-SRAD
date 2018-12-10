@@ -1,0 +1,20 @@
+When barometric and IMU correspond, barometric is used to tune IMU.
+When barometric differs from IMU, barometric is disregarded and guidance exclusively uses IMU.
+GPS connection overrides all, and is used to tune both.
+
+MODE 0
+GPS lock established:
+	Location coordinates updated
+	IMU is corrected
+	Barometric is corrected and tuned
+
+MODE 1
+No GPS lock, barometric corresponds with IMU:
+	Barometric altitude is used to tune and correct IMU
+
+MODE 2
+No GPS lock, barometric differs from IMU:
+	Barometric altitude is disregarded
+	IMU is soley used for guidance
+	When barometric returns to expected values (within margin), it is corrected and reinstated
+
