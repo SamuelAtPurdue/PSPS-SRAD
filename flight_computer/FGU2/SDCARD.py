@@ -2,7 +2,7 @@ import FGU, board, busio, digitalio, adafruit_sdcard, storage, os.path, json
 from objdict import ObjDict
 
 spi = busio.SPI(board.SCK, MOSI = board.MOSI, MISO = board.MISO)
-cs = digitalio.DigitalInOut(board.SD_CS)
+cs = digitalio.DigitalInOut(board.D10)
 sdcard = adafruit_sdcard.SDCard(spi, cs)
 vfs = storage.VfsFat(sdcard)
 storage.mount(vfs, "/sd")

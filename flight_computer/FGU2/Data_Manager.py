@@ -67,7 +67,7 @@ def broadcast_check(raise_error = False):
   return True
 
 def broadcast(data):
-  if broadcast_check(raise_error = True)
+  if broadcast_check(raise_error) == True:
     _broadcast_fct(data)
 
 def output(data):

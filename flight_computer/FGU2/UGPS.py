@@ -29,7 +29,7 @@ class ULTIMATEGPS_Sensor(FGU.Sensor):
 
     def flight_readiness_check(self):
       return_string =  '         Ultimate GPS is ready for launch.'
-      if not self.data.has_fix
+      if not self.data.has_fix:
         return_string = 'CAUTION: Ultimate GPS is NOT ready for launch. (NO FIX)'
       if not self._is_setup:
         return_string = 'CAUTION: Ultimate GPS is NOT ready for launch. (NOT SETUP)'

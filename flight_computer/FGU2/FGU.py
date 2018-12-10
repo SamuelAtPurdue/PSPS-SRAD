@@ -39,7 +39,7 @@ class Device_Manager():
     return overall_flight_readiness
 
 class Launch_Controller():
-  _launch_function = Launch_Controller._dummy_launch_function
+  _launch_function = None
   _ready_for_launch = False
   
   def _dummy_launch_function():
@@ -73,6 +73,8 @@ class Launch_Controller():
     if Launch_Controller._ready_for_launch:
       Launch_Controller._launch_function()
 
+Launch_Controller._launch_function = Launch_Controller._dummy_launch_function
+
 ### Abstract Class
 class Sensor(ABC):
   _is_setup = False
@@ -85,7 +87,7 @@ class Sensor(ABC):
       if key in self.ticks:
         self.ticks[key] = value
       else:
-        raise AttributeError('Invalid key in ticks:' key)
+        raise AttributeError('Invalid key in ticks:', key)
     
     self.data_manager = DM.Data_Manager()
     
@@ -114,9 +116,9 @@ class Sensor(ABC):
   def flight_readiness_check(self):
     pass
 
-  @abstractmethod
-  def activation_readiness_check(self):
-    pass
+#  @abstractmethod
+#  def activation_readiness_check(self):
+#    pass
   
 
 t0 = 0
