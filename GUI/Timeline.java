@@ -21,7 +21,7 @@ public class Timeline extends ArrayList<JSONObject>{
 		for(int i = 0; i < fileList.size(); i++) {
 			try{
 				System.out.println(fileList.get(i).getPath());
-				FileReader reader = new FileReader(fileList.get(0).getPath());
+				FileReader reader = new FileReader(fileList.get(i).getPath());
 				Object obj = jsonParser.parse(reader);
 				JSONObject jsonObject = (JSONObject) obj;
 				this.add(jsonObject);
@@ -40,8 +40,17 @@ public class Timeline extends ArrayList<JSONObject>{
 		this.add(moment);
 	}
 	
-	public void getClosestMoment() {
-		
+	public int getClosestMoment(double sliderPos) {
+		double[] timestamps = new double[this.size()];
+		int closestMoment = 0;
+		int timeDiff = 0;
+		for(int i = 0; i < this.size(); i++) {
+			timestamps[i] = (double)this.get(0).get("timestamp");
+		}
+		for(int i = 0; i < this.size(); i++) {
+			//check for how close the numbers are to i
+		}
+		return closestMoment;
 	}
 	
 

@@ -9,7 +9,7 @@ import javafx.scene.shape.Sphere;
 import javafx.scene.transform.Rotate;
 
 public class NavBall extends SegmentedSphereMesh{
-	private static final int size = 150; //radius
+	private static final int size = 130; //radius
 	private static final PhongMaterial material1 = new PhongMaterial(); //material 
 	private static final String navBallTexture = "navball.png"; //image file name
 	private static SegmentedSphereMesh sphere = new SegmentedSphereMesh(200,0,0,size,new Point3D(0f,0f,0f)); 
