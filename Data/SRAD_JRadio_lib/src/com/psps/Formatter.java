@@ -1,32 +1,52 @@
 package com.psps;
 
 /**
- * Created by Samuel Hild on 9/29/2018.
- * Formatter interface is used to organize the Formatter classes.
- * These functions must be implemented but more functions could be added in the future.
+ * Interface: Formatter
+ * The Formatter interface is implemented by all Formatter Objects.
+ * Formatter Objects take in raw data, format them to JSON which is then stored in the Formatter.
+ * This data can be retrieved by key-value pair or as one whole string.
  */
 public interface Formatter {
 
     /**
-     * packs incoming data to the Formatter instance.
-     * This data is stored as the specified data structure.
-     * @param dataIn Data in the form of a string or an array
+     * unpack():
+     * Unpacks the raw data to the Formatter Object.
+     * @param rawData unformatted data to unpack
      */
-    void pack(Object... dataIn) throws InvalidDataTypeException;
+    void unpack(char []rawData);
 
     /**
-     * gets the formatted data structure.
-     * @return formatted data structure dependant on instance of the class.
+     * pack():(FUTURE VERSION)
+     * Packs the data to the formatter (kept for future versions, implement empty)
+     * @param formattedData Formatted JSON data as a String
      */
-    String getFormattedData();
+    void pack(String formattedData);
 
     /**
-     * Clears the data from the formatter class
+     * clear():
+     * Clears all data from the formatter
      */
     void clear();
 
     /**
-     * @return formatted data structure array
+     * getStringValue():
+     * gets a value by the key String
+     * @param key String to decide which value to return
+     * @return value returned by a particular key
      */
-    Object[] getFormattedDataStructure();
+    String getStringValue(String key);
+
+    /**
+     * getFormattedData:
+     * get the formatted data
+     * @return data formatted as a String
+     */
+    String getFormattedData();
+
+    /**
+     * getUnformattedData():(FUTURE VERSION)
+     * get the unformatted data
+     * @return unformatted data as a char array
+     */
+    char []getUnformattedData();
 }

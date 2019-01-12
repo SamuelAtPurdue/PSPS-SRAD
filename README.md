@@ -26,7 +26,6 @@ The Primary Mission Requirements are as follows:
   <li> A reliable communication protocol for sending raw flight data back to the computer on the ground</li>
   <li> Easy access for charging</li>
   <li> Full communication and control from outside the rocket</li>  
-  <li> A custom build PCB sled capable of handling the G forces of flight</li>
 </ul>
 </p>
 <br>
@@ -41,6 +40,7 @@ The following are not mission critical but are goals but are planned for the fut
   <li> Electronic Buzzer for easier recovery</li>
   <li> Flight prediction and predicted failures</li>
   <li> Noncritical flight data such orientation</li>
+  <li> A custom build PCB sled capable of handling the G forces of flight</li>
 </ul>
 </p>
 <br>

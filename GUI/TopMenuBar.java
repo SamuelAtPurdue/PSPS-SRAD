@@ -14,16 +14,18 @@ import javafx.stage.Stage;
 public class TopMenuBar extends MenuBar{
 
 	private static Menu fileMenu = new Menu("File");
-	private static MenuItem openFile = new MenuItem("Open File");
+	private static MenuItem openFile = new MenuItem("Open File(s)...");
 	private static FileChooser fileChooser = new FileChooser();
 	private static List<File> fileList;
 	
 	public TopMenuBar(int x, int y) {
 		super();
 		fileMenu.getItems().add(openFile);
-		fileChooser.setTitle("Open Telemetry File");
+		fileChooser.setTitle("Open Telemetry File(s)");
 		this.getMenus().addAll(fileMenu);
-		this.setMinWidth(x);
+		this.setMinWidth(x + 20);
+	
+		
 	}
 	
 	public FileChooser getFileChooser(){
