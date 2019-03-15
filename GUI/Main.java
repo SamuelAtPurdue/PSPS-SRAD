@@ -1,34 +1,58 @@
+package application;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.transform.Rotate;
 import javafx.stage.FileChooser;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import jssc.SerialPort;
+import jssc.SerialPortList;
 
 public class Main extends Application {
 	
 	//windows size
-	public static final int X_SIZE = 1590;
-	public static final int Y_SIZE = 900;
+	public static final int X_SIZE = 1920;
+	public static final int Y_SIZE = 1040;
+	private static final int SPLASH_WIDTH = 676;
+	private static final int SPLASH_HEIGHT = 227;
+
+
 	
 	public static void main(String[] args) {
-        launch(args);
+		launch(args);
+		//LauncherImpl.launchApplication(Main.class, MyPreloader.class, args);
     }
-	
+
     @Override
     public void start(Stage primaryStage) throws Exception {
-    	
+		primaryStage.initStyle(StageStyle.UNDECORATED);
     	//define all elements
+		SerialPort arduinoPort = null;
+		ObservableList<String> portList = FXCollections.observableArrayList();
     	NavBall navBall = new NavBall();
     	NavBallScene navBallScene = new NavBallScene(navBall, X_SIZE, Y_SIZE);
     	Timeline timeline = new Timeline();
@@ -37,25 +61,34 @@ public class Main extends Application {
     	TopInfoScene topInfoScene = new TopInfoScene(X_SIZE, Y_SIZE);
     	SideInfoScene sideInfoScene = new SideInfoScene(X_SIZE, Y_SIZE);
     	GraphScene graphScene = new GraphScene(X_SIZE, Y_SIZE);
+    	ViewMap viewMap = new ViewMap();
+		SerialConnector sc = new SerialConnector(timeline, graphScene, sideInfoScene);
+		ComboBox ports = new ComboBox();
+		InfoScene infoScene = new InfoScene();
     	String[] elements = {"timestamp", "accel", "accel_angles", "accel_mgtd", "gyro_angles", "gyro_mgtd", "mag_angles", "mag_mgtd", "temp"};
-    	Hashtable<String, Label> mainLabels = new Hashtable<String, Label>();
-    	
-    	
-    	for(String s: elements) {
-    		mainLabels.put(s, new Label(s));
-    	}
     
     	Pane mainPane = new Pane();
     	Scene mainScene = new Scene(mainPane, X_SIZE, Y_SIZE);
 
-        
-        for(int i = 0; i < mainLabels.size(); i++) {
-        	mainLabels.get(elements[i]).setTranslateX(X_SIZE-300);
-        	mainLabels.get(elements[i]).setTranslateY(150 + i * 50);
-        	mainLabels.get(elements[i]).setId("label");
-        }
-        
-        
+		graphScene.bindTopScene(topInfoScene);
+
+		detectPort(ports, portList);
+		ports.setLayoutX(1700);
+		ports.setLayoutY(6);
+		ports.valueProperty()
+				.addListener(new ChangeListener<String>() {
+
+					@Override
+					public void changed(ObservableValue<? extends String> observable,
+										String oldValue, String newValue) {
+
+						System.out.println(newValue);
+						sc.disconnectArduino();
+						sc.connectArduino(newValue);
+						topInfoScene.setMode(1);
+					}
+				});
+
         mainScene.setOnKeyPressed(e -> {
         	  switch (e.getCode()) {
         	  case W:
@@ -86,8 +119,12 @@ public class Main extends Application {
         timelineSlider.valueProperty().addListener(new ChangeListener<Number>() {
             @Override 
             public void changed(ObservableValue observableValue, Number oldValue, Number newValue) {
-            	System.out.println(timelineSlider.getValue());
-            	
+            	//System.out.println(timelineSlider.getValue());
+            	if (topInfoScene.getMode() == 2){
+            		sideInfoScene.updateLabels(timelineSlider.getValue(), timeline);
+            		topInfoScene.setTime(Double.parseDouble(timeline.get(timeline.getCurrentPos()).get("timestamp").toString()));
+            		graphScene.moveMarker(timelineSlider.getValue());
+            	}
             }
           });
         
@@ -98,35 +135,38 @@ public class Main extends Application {
             	try{
 	            	List<File> fileList = new FileChooser().showOpenMultipleDialog(primaryStage);
 	                timeline.generateTimeline(fileList);
-	                for(int i = 0; i < mainLabels.size(); i++) {
-	                	mainLabels.get(elements[i]).setText(mainLabels.get(elements[i]).getText() + " " + timeline.get(0).get(elements[i]).toString());
-	                }
 	                topInfoScene.setMode(2);
+	                sideInfoScene.setMode(2);
 	                graphScene.generateGraph(timeline);
+	                timelineSlider.update();
+	                sideInfoScene.updateLabels(timelineSlider.getValue(), timeline);
+            		topInfoScene.setTime(Double.parseDouble(timeline.get(timeline.getCurrentPos()).get("timestamp").toString()));
+            		graphScene.moveMarker(timelineSlider.getValue());
             	}catch(Exception f){
             		System.out.println(f);
             	}
+            	
             }
 
         });
+
+
         
-       
+       topMenuBar.setSc(sc);
         
-       mainPane.getChildren().add(timelineSlider);
+       //mainPane.getChildren().add(timelineSlider);
        mainPane.getChildren().add(topMenuBar);
        mainPane.getChildren().add(navBallScene);
        mainPane.getChildren().add(topInfoScene);
        mainPane.getChildren().add(sideInfoScene);
        mainPane.getChildren().add(graphScene);
+       mainPane.getChildren().add(ports);
+       mainPane.getChildren().add(infoScene);
+       mainPane.getChildren().add(viewMap);
        
-       for(String s: elements) {
-   			mainPane.getChildren().add(mainLabels.get(s));
-       }
-       
-       
-       mainScene.getStylesheets().add("style.css");
 
-       
+       mainScene.getStylesheets().add("/application/style.css");
+
        primaryStage.setResizable(false);
        primaryStage.setScene(mainScene);
        primaryStage.setTitle("Launch UI");
@@ -134,8 +174,16 @@ public class Main extends Application {
        
     }
 
-    public void updateLabel(Label label, double num){
-    	label.setText("Temp: " + num);
-    }
+	private void detectPort(ComboBox comboBoxPorts, ObservableList<String> portList){
+
+		portList = FXCollections.observableArrayList();
+		String[] serialPortNames = SerialPortList.getPortNames();
+		for(String name: serialPortNames){
+			System.out.println(name);
+			portList.add(name);
+			comboBoxPorts.getItems().add(name);
+		}
+
+	}
     
 }

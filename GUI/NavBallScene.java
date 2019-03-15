@@ -1,3 +1,5 @@
+package application;
+
 import java.awt.Rectangle;
 
 import javafx.scene.ParallelCamera;
@@ -20,14 +22,14 @@ public class NavBallScene extends SubScene{
 	private static double sceneX;
 	private static double sceneY;
 	
-	private static final String level_indicator_texture = "level_indicator.png";
+	private static final String level_indicator_texture = "/application/level_indicator.png";
 	//private static Image = new Image(level_indicator_texture);
 	
 	public NavBallScene(NavBall navball, int x, int y) {
 		super(root, 300, 300, true, SceneAntialiasing.BALANCED); //send Pane to scene, apply dimensions
 		
-		this.setLayoutX(1001);
-	    this.setLayoutY(610);
+		this.setLayoutX(500);
+	    this.setLayoutY(739);
 		
 		camera.getTransforms().addAll(new Translate(0, 0, -150)); //move camera back 800
 	    camera.setFarClip(100000);

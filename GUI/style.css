@@ -28,7 +28,7 @@
     -fx-border-insets: 0;
    	-fx-border-width: 1;
   	-fx-border-style: solid;
-  	-fx-background-color: #000000;
+  	-fx-background-color: #111111;
 }
 
 #sideInfoScene{
@@ -36,7 +36,14 @@
     -fx-border-insets: 0;
    	-fx-border-width: 1;
   	-fx-border-style: solid;
-  	-fx-background-color: #000000;
+    -fx-background: #FFFFFF;
+}
+
+#sideInfoSceneAxis{
+    -fx-tick-label-fill: #FFFFFF;
+    -fx-tick-label-font-size: 13pt;
+    -fx-tick-length: 20;
+    -fx-minor-tick-length: 10;
 }
 
 #navBallScene{
@@ -44,7 +51,7 @@
     -fx-border-insets: 0;
    	-fx-border-width: 1;
   	-fx-border-style: solid;
-  	-fx-background-color: #000000;
+  	-fx-background-color: #111111;
 }
 
 #graphScene{
@@ -52,11 +59,17 @@
     -fx-border-insets: 0;
    	-fx-border-width: 1;
   	-fx-border-style: solid;
-  	-fx-background-color: #000000;
+  	-fx-background-color: #111111;
 }
 
 #timeLabel{
 	-fx-font-size: 35pt;
+	-fx-font-family: "DS-Digital";
+	-fx-font-style: italic;
+}
+
+#timeSLabel{
+	-fx-font-size: 25pt;
 	-fx-font-family: "DS-Digital";
 	-fx-font-style: italic;
 }
@@ -77,6 +90,48 @@
 	-fx-font-family: "ArialB";
 	-fx-light-text-color: #FFFFFF;
 }
+
+#line{
+	-fx-border-color: #FFFFFF;
+    -fx-border-insets: 0;
+   	-fx-border-width: 1;
+  	-fx-border-style: solid;
+  	-fx-background-color: #FFFFFF;
+}
+
+#toolbar{
+     -fx-color: #fff;
+     -fx-background: #3498db;
+ }
+
+#tab{
+    -fx-font-size: 13pt;
+    -fx-font-family: "ArialB";
+    -fx-light-text-color: #FFFFFF;
+}
+
+#infoTab{
+
+    -fx-background-color: #111111;
+}
+
+#specName{
+    -fx-font-size: 20pt;
+    -fx-font-family: "ArialB";
+    -fx-light-text-color: #FFFFFF;
+}
+
+#valLabel{
+    -fx-font-size: 20pt;
+    -fx-font-family: "ArialB";
+    -fx-light-text-color: #FFFFFF;
+    -fx-border-color: #FFFFFF;
+    -fx-border-insets: 0;
+    -fx-border-width: 1;
+    -fx-border-style: solid;
+    -fx-background-color: #323232;
+}
+
 
 
 
